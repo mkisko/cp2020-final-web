@@ -2,9 +2,12 @@
 {% block title %}Канбан{% endblock %}
 
 {% block content %}
+
+    <a href="{% url 'kanban-create' %}">Create</a>
+
     <ul>
-    {% for task in tasks %}
-        <li>{{ task.id }} | {{ task.title }} | {{ task.person.all }}</li>
-    {% endfor %}
+        {% for task in tasks %}
+            <li><a href="{% url 'kanban-view' id=task.id %}">{{ task.id }} | {{ task.title }} | {{ task.person.all }}</a></li>
+        {% endfor %}
     </ul>
 {% endblock %}

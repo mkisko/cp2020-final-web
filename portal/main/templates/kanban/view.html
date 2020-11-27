@@ -1,0 +1,12 @@
+{% extends 'layout.html' %}
+{% block title %}Задача #{{ task.id }}{% endblock %}
+
+{% block content %}
+    <p>{{ task.title }}</p>
+    <p>{{ task.description }}</p>
+
+    <p>{{ task.person.all }}</p>
+
+    <a href="{% url 'kanban-edit' id=task.id %}">Edit</a>
+    <form method="post">{% csrf_token %}<button type="submit">Delete</button></form>
+{% endblock %}
