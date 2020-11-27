@@ -1,12 +1,15 @@
 from django.shortcuts import render
 from django.views import View
 
+from .models import Task
 class Index(View):
     def get(self, request):
         return render(request, 'main/index.html')
 
-def test(request):
-    return render(request, 'main/test.html')
+class Kanban(View):
+    def get(self, request):
+        tasks = Task.objects.all()
 
-def kanban(request):
-    return render(request, 'kanban/index.html')
+        return render(request, 'kanban/index.html', {
+            'tasks': tasks
+        })

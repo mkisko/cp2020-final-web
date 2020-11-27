@@ -1,5 +1,10 @@
 {% extends 'layout.html' %}
 {% block title %}Канбан{% endblock %}
+
 {% block content %}
-    Канбан
+    <ul>
+    {% for task in tasks %}
+        <li>{{ task.id }} | {{ task.title }} | {{ task.person.all }}</li>
+    {% endfor %}
+    </ul>
 {% endblock %}
