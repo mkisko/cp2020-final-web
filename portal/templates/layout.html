@@ -1,6 +1,8 @@
-Header
-<a href="/">index</a> <a href="/test/">test</a>
-<hr>
-{% block content %}{% endblock %}
-<hr>
-Footer
+<html>
+<head>
+	<link rel="stylesheet" href="https://unpkg.com/@tabler/core@latest/dist/css/tabler.min.css">
+	<script src="https://unpkg.com/@tabler/core@latest/dist/js/tabler.min.js"></script>
+    <title>{% block title %}CP2020-final-rosatom{% endblock %}</title>
+</head>
+{% include 'menu.html' %}
+</html>
