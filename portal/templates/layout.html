@@ -10,6 +10,27 @@
     <link href="{% static 'css/tabler-payments.min.css' %}" rel="stylesheet"/>
     <link href="{% static 'css/tabler-vendors.min.css' %}" rel="stylesheet"/>
     <link href="{% static 'css/demo.min.css' %}" rel="stylesheet"/>
+    <link href="{% static 'leaflet/leaflet.css' %}" rel="stylesheet"/>
+ <style type="text/css">
+        body {
+          padding: 0;
+          margin: 0;
+        }
+
+        html, body, #map {
+          height: 100%;
+        }
+
+        .info {
+            width: 150px;
+            padding: 6px 8px;
+            font: 14px/16px Arial, Helvetica, sans-serif;
+            background: white;
+            background: rgba(255,255,255,1);
+            box-shadow: 0 0 15px rgba(0,0,0,0.2);
+            border-radius: 5px;
+        }
+    </style>
 </head>
 <div class="page">
     <header class="navbar navbar-expand-md navbar-dark navbar-overlap d-print-none">
@@ -17,8 +38,8 @@
             <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbar-menu">
                 <span class="navbar-toggler-icon"></span>
             </button>
-            <a href="." class="navbar-brand navbar-brand-autodark d-none-navbar-horizontal pr-0 pr-md-3">
-                <img src="{% static 'logo-white.svg' %}" width="110" height="32" alt="Tabler" class="navbar-brand-image">
+            <a href="/" class="navbar-brand navbar-brand-autodark d-none-navbar-horizontal pr-0 pr-md-3">
+                <img src="{% static 'logo1.svg' %}" width="110" height="32" alt="Tabler" class="navbar-brand-image">
             </a>
             <div class="navbar-nav flex-row order-md-last">
                 <div class="nav-item dropdown d-none d-md-flex mr-3">
