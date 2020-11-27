@@ -2,4 +2,6 @@
 
 portal/*.sqlite3
 portal/*/migrations/*.py
+portal/.idea/
+portal/venv/
 !portal/*/migrations/__init__.py
