@@ -1,3 +1,5 @@
 .env
 
 portal/*.sqlite3
+portal/*/migrations/*.py
+!portal/*/migrations/__init__.py
