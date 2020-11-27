@@ -12,7 +12,12 @@ class Kanban(View):
         tasks = Task.objects.all()
 
         return render(request, 'kanban/index.html', {
-            'tasks': tasks
+            'kanban': {
+                'Сободные': tasks.filter(status='free'),
+                'Активные': tasks.filter(status='active'),
+                'В процессе': tasks.filter(status='process'),
+                'Завершенные': tasks.filter(status='ended')
+            }
         })
 
 class KanbanView(View):

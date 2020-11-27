@@ -6,12 +6,12 @@ class Task(models.Model):
     person = models.ManyToManyField(User, related_name='tasks')
 
     STATUS = [
-        (0, 'Свободная'),
-        (1, 'Активная'),
-        (2, 'В процессе'),
-        (3, 'Завершена')
+        ('free', 'Свободная'),
+        ('active', 'Активная'),
+        ('process', 'В процессе'),
+        ('ended', 'Завершена')
     ]
-    status = models.IntegerField(choices=STATUS, default=0)
+    status = models.CharField(max_length=10, choices=STATUS, default=0)
 
     created = models.DateTimeField(auto_now_add=True)
     updated = models.DateTimeField(auto_now=True)
