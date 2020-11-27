@@ -5,4 +5,6 @@ urlpatterns = [
     path('', Index.as_view(), name='index'),
 
     path('test/', test, name='index'),
+
+    path('kanban/', kanban, name='kanban-index'),
 ]

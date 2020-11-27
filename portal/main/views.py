@@ -7,3 +7,6 @@ class Index(View):
 
 def test(request):
     return render(request, 'main/test.html')
+
+def kanban(request):
+    return render(request, 'kanban/index.html')
