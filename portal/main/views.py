@@ -64,3 +64,7 @@ class KanbanForm(View):
         return render(request, 'kanban/form.html', {
             'form': form
         })
+
+class Map(View):
+    def get(self, request):
+        return render(request, 'map/index.html')

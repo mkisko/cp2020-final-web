@@ -4,6 +4,9 @@ from .views import *
 urlpatterns = [
     path('', Index.as_view(), name='index'),
 
+    #map
+    path('map/', Map.as_view(), name="map-index"),
+
     # kanban
     path('kanban/', Kanban.as_view(), name='kanban-index'),
     path('kanban/create/', KanbanForm.as_view(), name='kanban-create'),
