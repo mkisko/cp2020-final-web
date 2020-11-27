@@ -32,7 +32,7 @@ class KanbanForm(View):
     def get(self, request, id=None):
         form = TaskForm() if not id else TaskForm(instance=Task.objects.get(id=id))
 
-        return render(request, 'kanban/create.html', {
+        return render(request, 'kanban/form.html', {
             'form': form
         })
 
@@ -44,6 +44,6 @@ class KanbanForm(View):
 
             return redirect('kanban-index') if not id else redirect('kanban-view', id)
 
-        return render(request, 'kanban/create.html', {
+        return render(request, 'kanban/form.html', {
             'form': form
         })
