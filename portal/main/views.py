@@ -56,3 +56,7 @@ class KanbanForm(View):
 class Map(View):
     def get(self, request):
         return render(request, 'map/index.html')
+
+class Employee(View):
+    def get(self, request):
+        return render(request, 'employees/index.html')
