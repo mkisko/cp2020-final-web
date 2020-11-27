@@ -14,3 +14,5 @@ RUN apt-get install -y ffmpeg
 
 COPY requirements.txt ./requirements.txt
 RUN pip install -r ./requirements.txt
+
+COPY . .
