@@ -1,12 +1,16 @@
 from django.shortcuts import render, redirect
 from django.views import View
+from django.http import HttpResponse
+from django.views.decorators.csrf import csrf_exempt
+from django.utils.decorators import method_decorator
 
 from .models import Task
 from .forms import TaskForm
 class Index(View):
     def get(self, request):
         return render(request, 'main/index.html')
-
+        
+@method_decorator(csrf_exempt, name='dispatch')
 class Kanban(View):
     def get(self, request):
         tasks = Task.objects.all()
@@ -20,6 +24,14 @@ class Kanban(View):
             }
         })
 
+    def post(self, request):
+        data = request.POST
+
+        task = Task.objects.get(id=data['id'])
+        task.status = data['status']
+        task.save()
+
+        return HttpResponse()
 class KanbanView(View):
     def get(self, request, id):
         task = Task.objects.get(id=id)
