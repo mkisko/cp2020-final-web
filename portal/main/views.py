@@ -1,9 +1,10 @@
 from django.shortcuts import render, redirect
 from django.views import View
-from django.http import HttpResponse
+from django.http import HttpResponse, JsonResponse
 from django.views.decorators.csrf import csrf_exempt
 from django.utils.decorators import method_decorator
 from django.contrib.auth.models import User
+from django.contrib import messages
 
 from .models import Task, Question, Profile
 from .forms import TaskForm
@@ -15,56 +16,52 @@ class Index(View):
 class Kanban(View):
     def get(self, request):
         tasks = Task.objects.all()
+        users = User.objects.all()
 
-        return render(request, 'kanban/index.html', {
+        return render(request, 'main/kanban.html', {
             'kanban': {
                 'Сободные': tasks.filter(status='free'),
                 'Активные': tasks.filter(status='active'),
                 'В процессе': tasks.filter(status='process'),
                 'Завершенные': tasks.filter(status='ended')
-            }
+            },
+            'users': users
         })
 
     def post(self, request):
         data = request.POST
+        type = data.get('type')
 
-        task = Task.objects.get(id=data['id'])
-        task.status = data['status']
-        task.save()
+        if type == 'get':
+            task = Task.objects.get(id=request.GET.get('id'))
 
-        return HttpResponse()
-class KanbanView(View):
-    def get(self, request, id):
-        task = Task.objects.get(id=id)
+            return JsonResponse({
+                'id': task.id,
+                'title': task.title,
+                'description': task.description,
+                'status': task.status,
+                'hours': task.hours,
+                'author': task.author.id,
+                'persons': [person.id for person in task.person.all()],
+                'comments': [{'text': comment.text, 'user': comment.user.id} for comment in task.comments.all()]
+            })
+        
+        elif type == 'delete':
+            task = Task.objects.get(id=request.GET.get('id'))
+            task.delete()
+            messages.error(request, 'Задача удалена!')
 
-        return render(request, 'kanban/view.html', {
-            'task': task
-        })
-
-    def post(self, request, id):
-        task = Task.objects.get(id=id)
-        task.delete()
-
-        return redirect('kanban-index')  
-class KanbanForm(View):
-    def get(self, request, id=None):
-        form = TaskForm() if not id else TaskForm(instance=Task.objects.get(id=id))
-
-        return render(request, 'kanban/form.html', {
-            'form': form
-        })
-
-    def post(self, request, id=None):
-        form = TaskForm(request.POST, instance=None if not id else Task.objects.get(id=id))
-
-        if form.is_valid():
-            form.save()
-
-            return redirect('kanban-index') if not id else redirect('kanban-view', id)
-
-        return render(request, 'kanban/form.html', {
-            'form': form
-        })
+            return redirect('kanban')
+        
+        else:
+            form = TaskForm(request.POST, instance=None if not request.GET.get('id') else Task.objects.get(id=request.GET.get('id')))
+            if form.is_valid():
+                form.save()
+                messages.success(request, 'Задача успешно обновлена!')
+            else:
+                messages.error(request, 'Произошла ошибка при сохранении!')
+        
+        return redirect('kanban')
 
 class Map(View):
     def get(self, request):
