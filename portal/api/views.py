@@ -73,11 +73,14 @@ class TaskList(View):
                 'title': task.title,
                 'description': task.description,
                 'status': task.status,
+                'hours': task.hours,
                 'persons': [{
                         'id': person.id, 
                         'fio': person.profile.fio,
                         'role': person.profile.role.title
                     } for person in task.person.all()],
+                'created': task.created,
+                'updated': task.updated
             })
         
         return JsonResponse(response, safe=False)
