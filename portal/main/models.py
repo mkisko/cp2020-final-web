@@ -42,11 +42,11 @@ class Task(models.Model):
     status = models.CharField(max_length=10, choices=STATUS, default='free', verbose_name='Статус задачи')
 
     PRIORITY = [
-        ('base', 'Обычная'),
-        ('important', 'Важная'),
-        ('hot', 'Срочная')
+        (0, 'Обычная'),
+        (1, 'Важная'),
+        (2, 'Срочная')
     ]
-    priority = models.CharField(max_length=10, choices=PRIORITY, default='base', verbose_name='Приоритет задачи')
+    priority = models.IntegerField(choices=PRIORITY, default=0, verbose_name='Приоритет задачи')
 
     hours = models.IntegerField(verbose_name='Часов на реализацию')
     author = models.ForeignKey(User, related_name='task', on_delete=models.CASCADE, verbose_name='Создатель задачи')
@@ -59,6 +59,8 @@ class Task(models.Model):
     class Meta:
         verbose_name = 'Задача'
         verbose_name_plural = 'Задачи'
+
+        ordering = ['-priority']
 
 class SubTask(models.Model):
     task = models.ForeignKey(Task, related_name='subtasks', on_delete=models.CASCADE, verbose_name='Задача')

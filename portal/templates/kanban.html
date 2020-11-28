@@ -87,7 +87,7 @@
                   {% endwith %}
                 </div>
 
-                <div class="ribbon {% if task.priority == 'important' %}bg-success{% elif task.priority == 'hot' %}bg-red{% else %}bg-primary{% endif %}">
+                <div class="ribbon {% if task.priority == 1 %}bg-success{% elif task.priority == 2 %}bg-red{% else %}bg-primary{% endif %}">
                   {{ task.get_priority_display }}
                 </div>
               </div>
@@ -133,9 +133,9 @@
 
                 <label class="form-label">Приоритет задачи</label>
                 <select name="priority" class="form-select">
-                  <option value="base">Обычная</option>
-                  <option value="important">Важная</option>
-                  <option value="hot">Срочная</option>
+                  <option value="0">Обычная</option>
+                  <option value="1">Важная</option>
+                  <option value="2">Срочная</option>
                 </select>
               </form>
 
@@ -210,9 +210,9 @@
                 <div>
                   <label class="form-label">Приоритет задачи</label>
                   <select name="priority" class="form-select">
-                    <option value="base">Обычная</option>
-                    <option value="important">Важная</option>
-                    <option value="hot">Срочная</option>
+                    <option value="0">Обычная</option>
+                    <option value="1">Важная</option>
+                    <option value="2">Срочная</option>
                   </select>
                 </div>
               </form>
