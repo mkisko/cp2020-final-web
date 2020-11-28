@@ -101,6 +101,9 @@ class TaskList(View):
             if data.getlist('persons'):
                 for person in data.getlist('persons'):
                     task.person.add(person)
+            else:
+                task.status = 'free'
+                task.save()
 
             return JsonResponse({
                 'success': True,

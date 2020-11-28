@@ -3,27 +3,35 @@ from django.contrib.auth.models import User
 
 # USER MODELS
 class Role(models.Model):
-    title = models.CharField(max_length=100)
-    skills = models.TextField(blank=True)
+    title = models.CharField(max_length=100, verbose_name='Заголовок')
+    skills = models.TextField(blank=True, verbose_name='Навыки')
 
     def __str__(self):
-        return self.title    
+        return self.title
+    
+    class Meta:
+        verbose_name = 'Роль'
+        verbose_name_plural = 'Роли'
 
 class Profile(models.Model):
-    user = models.OneToOneField(User, related_name='profile', on_delete=models.CASCADE)
+    user = models.OneToOneField(User, related_name='profile', on_delete=models.CASCADE, verbose_name='Пользователь')
 
-    fio = models.CharField(max_length=50)
-    role = models.ForeignKey(Role, related_name='profiles', on_delete=models.CASCADE)
-    hours_per_day = models.IntegerField(default=8)
+    fio = models.CharField(max_length=50, verbose_name='ФИО')
+    role = models.ForeignKey(Role, related_name='profiles', on_delete=models.CASCADE, verbose_name='Роль в системе')
+    hours_per_day = models.IntegerField(default=8, verbose_name='Часов в день', help_text='Количество часов в день которое может отрабатывать работник')
 
     def __str__(self):
         return self.fio
 
+    class Meta:
+        verbose_name = 'Профиль'
+        verbose_name_plural = 'Профили'
+
 # TASK & TEMPLATES
 class Task(models.Model):
-    title = models.CharField(max_length=255)
-    description = models.TextField(blank=True)
-    person = models.ManyToManyField(User, related_name='tasks', blank=True)
+    title = models.CharField(max_length=255, verbose_name='Заголовок')
+    description = models.TextField(blank=True, verbose_name='Описание')
+    person = models.ManyToManyField(User, related_name='tasks', blank=True, verbose_name='Ответственные за выполнение')
 
     STATUS = [
         ('free', 'Свободная'),
@@ -31,37 +39,61 @@ class Task(models.Model):
         ('process', 'В процессе'),
         ('ended', 'Завершена')
     ]
-    status = models.CharField(max_length=10, choices=STATUS, default='free')
+    status = models.CharField(max_length=10, choices=STATUS, default='free', verbose_name='Статус задачи')
 
-    hours = models.IntegerField()
-    author = models.ForeignKey(User, related_name='task', on_delete=models.CASCADE)
+    hours = models.IntegerField(verbose_name='Часов на реализацию')
+    author = models.ForeignKey(User, related_name='task', on_delete=models.CASCADE, verbose_name='Создатель задачи')
     created = models.DateTimeField(auto_now_add=True)
     updated = models.DateTimeField(auto_now=True)
 
     def __str__(self):
         return self.title
 
+    class Meta:
+        verbose_name = 'Задача'
+        verbose_name_plural = 'Задачи'
+
 class Regulations(models.Model):
-    title = models.CharField(max_length=255)
-    description = models.TextField(blank=True)
-    roles = models.ManyToManyField(Role, related_name='regulations', blank=True)
-    hours = models.IntegerField()
+    title = models.CharField(max_length=255, verbose_name='Заголовок')
+    description = models.TextField(blank=True, verbose_name='Описание')
+    roles = models.ManyToManyField(Role, related_name='regulations', blank=True, verbose_name='Компетенции')
+    hours = models.IntegerField(verbose_name='Часов на реализацию')
 
     def __str__(self):
         return self.title
 
+    class Meta:
+        verbose_name = 'Норматив'
+        verbose_name_plural = 'Нормативы'
+
 # SOME MODELS FOREIGN TASK
 class Comment(models.Model):
-    task = models.ForeignKey(Task, related_name='comments', on_delete=models.CASCADE)
-    author = models.ForeignKey(User, related_name='comments', on_delete=models.CASCADE)
-    text = models.TextField(max_length=1000)
+    task = models.ForeignKey(Task, related_name='comments', on_delete=models.CASCADE, verbose_name='Задача')
+    author = models.ForeignKey(User, related_name='comments', on_delete=models.CASCADE, verbose_name='Создатель')
+    text = models.TextField(max_length=1000, verbose_name='Комментарий')
 
+    class Meta:
+        verbose_name = 'Комментарий'
+        verbose_name_plural = 'Комментарии'
 
 # QUIZ FOR USERS
 class Question(models.Model):
-    title = models.CharField(max_length=255)
+    title = models.CharField(max_length=255, verbose_name='Текст вопроса')
+
+    def __str__(self):
+        return self.title
+
+    class Meta:
+        verbose_name = 'Вопрос'
+        verbose_name_plural = 'Вопросы'
 
 class Answer(models.Model):
-    user = models.ForeignKey(User, related_name='answers', on_delete=models.CASCADE)
-    question = models.ForeignKey(Question, related_name='answers', on_delete=models.CASCADE)
-    answer = models.CharField(max_length=255)
+    user = models.ForeignKey(User, related_name='answers', on_delete=models.CASCADE, verbose_name='Пользователь')
+    question = models.ForeignKey(Question, related_name='answers', on_delete=models.CASCADE, verbose_name='Вопрос')
+    answer = models.CharField(max_length=255, verbose_name='Ответ')
+
+    def __str__(self):
+        return self.answer
+    class Meta:
+        verbose_name = 'Ответ'
+        verbose_name_plural = 'Ответы'
