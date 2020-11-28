@@ -17,4 +17,7 @@ urlpatterns = [
     path('kanban/<int:id>/view/', KanbanView.as_view(), name='kanban-view'),
     path('kanban/<int:id>/delete/', KanbanView.as_view(), name='kanban-delete'),
 
+    # security
+
+
 ]

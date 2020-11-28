@@ -72,3 +72,8 @@ class Map(View):
 class Employee(View):
     def get(self, request):
         return render(request, 'employees/index.html')
+
+
+class Security(View):
+    def login(self, request):
+        return render(request, 'security/login.html')
