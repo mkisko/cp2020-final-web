@@ -25,7 +25,7 @@ class Kanban(View):
 
         return render(request, 'kanban.html', {
             'kanban': {
-                'Сободные': tasks.filter(status='free'),
+                'Свободные': tasks.filter(status='free'),
                 'Активные': tasks.filter(status='active'),
                 'В процессе': tasks.filter(status='process'),
                 'Завершенные': tasks.filter(status='ended')

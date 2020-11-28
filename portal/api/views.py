@@ -76,10 +76,17 @@ class TaskList(View):
                 'status': task.status,
                 'hours': task.hours,
                 'persons': [{
-                        'id': person.id, 
-                        'fio': person.profile.fio,
-                        'role': person.profile.role.title
+                    'id': person.id, 
+                    'fio': person.profile.fio,
+                    'role': person.profile.role.title
                     } for person in task.person.all()],
+                'subtasks': [{
+                    'id': sub.id,
+                    'title': sub.title,
+                    'hours': sub.hours,
+                    'success': sub.success,
+                    'created': sub.created
+                    } for sub in task.subtasks.all()],
                 'created': task.created,
                 'updated': task.updated
             })
