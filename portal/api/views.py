@@ -6,6 +6,8 @@ from django.utils.decorators import method_decorator
 
 from django.http import JsonResponse
 
+from main.models import Regulations, Role
+
 @method_decorator(csrf_exempt, name='dispatch')
 class VioceParser(View):
     def get(self, request):
@@ -32,3 +34,31 @@ class VioceParser(View):
             return JsonResponse({
                 'error': True
             }) 
+
+@method_decorator(csrf_exempt, name='dispatch')
+class GetRegulation(View):
+    def post(self, request):
+        title = request.POST.get('title')
+
+        if not title:
+            return JsonResponse({'success': False})
+
+        regulation = Regulations.objects.filter(title__icontains=title).first()
+        if not regulation:
+            return JsonResponse({'success': False})
+        
+        persons = []
+        roles = regulation.roles.all()
+
+        for role in roles:
+            for person in role.profiles.all():
+                persons.append(person.id)
+
+        return JsonResponse({
+            'success': True, 
+            'regulation': {
+                'title': regulation.title,
+                'hours': regulation.hours,
+                'persons': persons
+            }
+        })

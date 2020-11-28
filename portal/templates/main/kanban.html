@@ -98,39 +98,31 @@
     {% endfor %}
 
     <div class="modal modal-blur fade" id="modal-task-create" tabindex="-1" role="dialog" aria-hidden="true">
-      <div class="modal-dialog modal-dialog-centered" role="document">
-        <form method="post" class="modal-content">
+      <div class="modal-dialog modal-lg modal-dialog-centered" role="document">
+        <div class="modal-content">
           <div class="modal-header">
             <h5 class="modal-title">Добавление задачи</h5>
             <button type="button" class="btn-close" data-dismiss="modal" aria-label="Close"></button>
           </div>
 
-          {% csrf_token %}
-          <input type="hidden" class="form-control" name="author" value="{{ user.id }}">
-
           <div class="modal-body">
-            <div>
-              <label class="form-label">Заголовок задачи</label>
-                <input type="text" class="form-control" name="title">
-              </div>
+            <div class="row">
+              <form method="post" class="col default-container form-task-create">
+                {% csrf_token %}
+                <input type="hidden" class="form-control" name="author" value="{{ user.id }}">
 
-              <div>
+                <label class="form-label">Заголовок задачи</label>
+                <input type="text" class="form-control check-regulations" name="title" required>
+
                 <label class="form-label">Описание задачи</label>
-                <textarea class="form-control" name="desscription"></textarea>
-              </div>
+                <textarea class="form-control" name="description"></textarea>
 
-              <div>
                 <label class="form-label">Выберите исполнителей</label>
-                <select name="person" class="form-select select-employee-create" multiple
-                  placeholder='Нажмите чтобы выбрать'></select>
-              </div>
+                <select name="person" class="form-select select-employee-create" multiple placeholder='Нажмите чтобы выбрать' required></select>
 
-              <div>
                 <label class="form-label">Количество часов</label>
-                <input type="text" class="form-control" name="hours">
-              </div>
+                <input type="text" class="form-control" name="hours" required>
 
-              <div>
                 <label class="form-label">Статус задачи</label>
                 <select name="status" class="form-select">
                   <option value="free">Свободная</option>
@@ -138,14 +130,28 @@
                   <option value="process">В процессе</option>
                   <option value="ended">Завершенная</option>
                 </select>
+              </form>
+
+              <!-- added here-->
+              <div class="col-md-4 regulation-container" style="display:none">
+                <label class="form-label">Возможно вы имели в виду...</label>
+                <input type="text" disabled class="form-control" name="title" value="Замена детали мотора">
+
+                <label class="form-label">Рекомендуемые исполнители</label>
+                <select name="person" disabled class="form-select select-employee-create-regulations"></select>
+
+                <label class="form-label">Количество часов</label>
+                <input type="text" disabled class="form-control" name="hours">
+
+                <button class="btn btn-primary mt-3 regulation-submit">Применить</button>
               </div>
             </div>
+          </div>
 
-            <div class="modal-footer">
-              <button type="button" class="btn mr-auto" data-dismiss="modal">Закрыть</button>
-              <button type="submit" class="btn btn-primary">Сохранить</button>
-            </div>
-          </form>
+          <div class="modal-footer">
+            <button type="button" class="btn mr-auto" data-dismiss="modal">Закрыть</button>
+            <button type="button" class="btn btn-primary save-task-create">Сохранить</button>
+          </div>
         </div>
       </div>
     </div>
@@ -170,7 +176,7 @@
 
                 <div>
                   <label class="form-label">Описание задачи</label>
-                  <textarea class="form-control" name="desscription"></textarea>
+                  <textarea class="form-control" name="description"></textarea>
                 </div>
 
                 <div>
@@ -245,8 +251,9 @@
       }
     };
 
-    $('.select-employee-create').selectize(selectizeConf)
+    let $create = $('.select-employee-create').selectize(selectizeConf)
     let $change = $('.select-employee-edit').selectize(selectizeConf);
+    let $regulation = $('.select-employee-create-regulations').selectize(selectizeConf);
   </script>
 
   <script>
@@ -262,7 +269,7 @@
         success: function (response) {
           modal.find('.modal-title').html('Просмотр задачи');
           modal.find('[name=title]').val(response.title);
-          modal.find('[name=description]').val(response.description);
+          modal.find('[name=description]').html(response.description);
           modal.find('[name=hours]').val(response.hours);
           modal.find('[name=author]').val(response.author);
           modal.find('[name=status] option[value=' + response.status + ']').prop('selected', true);;
@@ -276,7 +283,7 @@
 
           if (response.comments.length == 0) modal.find('.comments-container').append(`<div class="alert alert-warning">Комментариев нет!</div>`)
 
-          let upd = $change[0].selectize.addItems(response.persons);
+          $change[0].selectize.addItems(response.persons);
         }
       });
 
@@ -286,5 +293,44 @@
     $('.save-task-edit').click(function () {
       $('.form-task-edit').submit();
     });
+
+    $('.save-task-create').click(function () {
+      $('.form-task-create').submit();
+    });
+
+    let regulation = [];
+    $('.check-regulations').on('keyup', function() {
+      $.ajax({
+        type: 'post',
+        url: '{% url "api:regulation" %}',
+        data: {
+          title: this.value
+        },
+        success: function (response) {
+          if (response.success) {
+            $('.regulation-container').find('[name=title]').val(response.regulation.title)
+            
+            if (response.regulation.persons.length > 0) $regulation[0].selectize.addItems(response.regulation.persons);
+            else $regulation[0].selectize.clear();
+
+            $('.regulation-container').find('[name=hours]').val(response.regulation.hours)
+            $('.regulation-container').show()
+
+            regulation = response.regulation
+          } else {
+            $('.regulation-container').hide()
+          }
+        }
+      });
+    });
+
+    $('.regulation-submit').click(function () {
+      $('.default-container').find('[name=title]').val(regulation.title);
+
+      if (regulation.persons.length > 0) $create[0].selectize.addItems(regulation.persons);
+      else $create[0].selectize.clear();
+      
+      $('.default-container').find('[name=hours]').val(regulation.hours);
+    })
   </script>
 {% endblock %}
