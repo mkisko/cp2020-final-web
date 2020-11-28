@@ -1,5 +1,5 @@
 from django.shortcuts import render
-
+from django.contrib.auth.models import User
 from django.views import View
 from django.views.decorators.csrf import csrf_exempt
 from django.utils.decorators import method_decorator
@@ -62,6 +62,7 @@ class GetRegulation(View):
             }
         })
 
+@method_decorator(csrf_exempt, name='dispatch')
 class TaskList(View):
     def get(self, request, id=None):
         tasks = Task.objects.all() if not id else Task.objects.filter(id=id)
@@ -85,6 +86,30 @@ class TaskList(View):
         
         return JsonResponse(response, safe=False)
 
+    def post(self, request):
+        data = request.POST
+        
+        try:            
+            task = Task.objects.create(
+                title=data.get('title'),
+                description=data.get('description'),
+                status=data.get('status', 'free'),
+                hours=data.get('hours'),
+                author=User.objects.get(id=data.get('author'))
+            )
+
+            if data.getlist('persons'):
+                for person in data.getlist('persons'):
+                    task.person.add(person)
+
+            return JsonResponse({
+                'success': True,
+                'id': task.id
+            })
+        except:
+            return JsonResponse({
+                'success': False
+            })
 class AnswersList(View):
     def get(self, request, id=None):
         answers = Answer.objects.all() if not id else Answer.objects.filter(user__id=id)
