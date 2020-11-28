@@ -115,6 +115,8 @@ class Answer(models.Model):
     question = models.ForeignKey(Question, related_name='answers', on_delete=models.CASCADE, verbose_name='Вопрос')
     answer = models.CharField(max_length=255, verbose_name='Ответ')
 
+    created = models.DateTimeField(auto_now_add=True)
+    
     def __str__(self):
         return self.answer
     class Meta:

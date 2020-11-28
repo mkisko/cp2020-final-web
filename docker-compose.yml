@@ -28,3 +28,23 @@ services:
   #     - MYSQL_DATABASE=app
   #   ports:
   #     - 3366:3306
+  
+  celery:
+    build: ./portal
+    command: celery -A portal worker -B -l INFO
+    volumes:
+      - ./portal/:/portal
+    depends_on:
+      - portal
+      - redis
+    env_file:
+      - .env
+    links:
+      - redis
+
+  redis:
+    image: redis
+    restart: always
+    command: redis-server
+    ports:
+      - ${PORT_REDIS}:6379
