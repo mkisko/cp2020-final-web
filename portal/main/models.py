@@ -14,9 +14,14 @@ class Task(models.Model):
     status = models.CharField(max_length=10, choices=STATUS, default='free')
 
     hours = models.IntegerField()
-
+    author = models.ForeignKey(User, related_name='comments', on_delete=models.CASCADE)
     created = models.DateTimeField(auto_now_add=True)
     updated = models.DateTimeField(auto_now=True)
+
+class Comment(models.Model):
+    task = models.ForeignKey(Task, related_name='comments', on_delete=models.CASCADE)
+    author = models.ForeignKey(User, related_name='comments', on_delete=models.CASCADE)
+    text = models.TextField(max_length=1000)
 
 class Profile(models.Model):
     user = models.OneToOneField(User, related_name='profile', on_delete=models.CASCADE)
