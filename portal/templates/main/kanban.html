@@ -98,7 +98,7 @@
     {% endfor %}
 
     <div class="modal modal-blur fade" id="modal-task" tabindex="-1" role="dialog" aria-hidden="true">
-      <div class="modal-dialog modal-dialog-centered" role="document">
+      <div class="modal-dialog modal-dialog-centered" style="max-width:1100px" role="document">
         <form method="post" class="modal-content">
           <div class="modal-header">
             <h5 class="modal-title">Добавление задачи</h5>
@@ -109,35 +109,45 @@
           <input type="hidden" class="form-control" name="author" value="{{ user.id }}">
 
           <div class="modal-body">
-            <div>
-              <label class="form-label">Заголовок задачи</label>
-              <input type="text" class="form-control" name="title">
-            </div>
+            <div class="row">
+              <div class="col">
+                <div>
+                  <label class="form-label">Заголовок задачи</label>
+                  <input type="text" class="form-control" name="title">
+                </div>
 
-            <div>
-              <label class="form-label">Описание задачи</label>
-              <textarea class="form-control" name="desscription"></textarea>
-            </div>
+                <div>
+                  <label class="form-label">Описание задачи</label>
+                  <textarea class="form-control" name="desscription"></textarea>
+                </div>
 
-            <div>
-              <label class="form-label">Выберите исполнителей</label>
-              <select name="person" class="form-select select-employee" multiple
-                placeholder='Нажмите чтобы выбрать'></select>
-            </div>
+                <div>
+                  <label class="form-label">Выберите исполнителей</label>
+                  <select name="person" class="form-select select-employee" multiple
+                    placeholder='Нажмите чтобы выбрать'></select>
+                </div>
 
-            <div>
-              <label class="form-label">Количество часов</label>
-              <input type="text" class="form-control" name="hours">
-            </div>
+                <div>
+                  <label class="form-label">Количество часов</label>
+                  <input type="text" class="form-control" name="hours">
+                </div>
 
-            <div>
-              <label class="form-label">Статус задачи</label>
-              <select name="status" class="form-select">
-                <option value="free">Свободная</option>
-                <option value="active">Активная</option>
-                <option value="process">В процессе</option>
-                <option value="ended">Завершенная</option>
-              </select>
+                <div>
+                  <label class="form-label">Статус задачи</label>
+                  <select name="status" class="form-select">
+                    <option value="free">Свободная</option>
+                    <option value="active">Активная</option>
+                    <option value="process">В процессе</option>
+                    <option value="ended">Завершенная</option>
+                  </select>
+                </div>
+              </div>
+
+              <div class="col">
+                <label class="form-label">Коментарии</label>
+
+                <div class="comments-container"></div>
+              </div>
             </div>
           </div>
 
@@ -205,6 +215,14 @@
           modal.find('[name=author]').val(response.author);
           modal.find('[name=status] option[value=' + response.status + ']').prop('selected', true);;
           modal.find('form').attr('action', '{% url 'kanban' %}?id=' + response.id);
+
+          modal.find('.comments-container').empty();
+
+          response.comments.forEach(function (item) {
+            modal.find('.comments-container').append(`<div class="alert alert-primary"><string>${ item.user }</string> говорит ... ${ item.text }`)
+          });
+
+          if (response.comments.length == 0) modal.find('.comments-container').append(`<div class="alert alert-warning">Комментариев нет!</div>`)
 
           let upd = $change[0].selectize.addItems(response.persons);
         }

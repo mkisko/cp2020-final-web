@@ -43,7 +43,7 @@ class Kanban(View):
                 'hours': task.hours,
                 'author': task.author.id,
                 'persons': [person.id for person in task.person.all()],
-                'comments': [{'text': comment.text, 'user': comment.user.id} for comment in task.comments.all()]
+                'comments': [{'text': comment.text, 'user': comment.author.profile.fio} for comment in task.comments.all()]
             })
         
         elif type == 'delete':
