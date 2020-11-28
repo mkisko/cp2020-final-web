@@ -41,6 +41,13 @@ class Task(models.Model):
     ]
     status = models.CharField(max_length=10, choices=STATUS, default='free', verbose_name='Статус задачи')
 
+    PRIORITY = [
+        ('base', 'Обычная'),
+        ('important', 'Важная'),
+        ('hot', 'Срочная')
+    ]
+    priority = models.CharField(max_length=10, choices=PRIORITY, default='base', verbose_name='Приоритет задачи')
+
     hours = models.IntegerField(verbose_name='Часов на реализацию')
     author = models.ForeignKey(User, related_name='task', on_delete=models.CASCADE, verbose_name='Создатель задачи')
     created = models.DateTimeField(auto_now_add=True)
@@ -53,6 +60,20 @@ class Task(models.Model):
         verbose_name = 'Задача'
         verbose_name_plural = 'Задачи'
 
+class SubTask(models.Model):
+    task = models.ForeignKey(Task, related_name='subtasks', on_delete=models.CASCADE, verbose_name='Задача')
+    title = models.CharField(max_length=255, verbose_name='Заголовок')
+    hours = models.IntegerField(verbose_name='Часов на реализацию')
+    success = models.BooleanField(default=False, verbose_name='Задача выполнена')
+    created = models.DateTimeField(auto_now_add=True)
+    updated = models.DateTimeField(auto_now=True)
+
+    def __str__(self):
+        return self.title
+
+    class Meta:
+        verbose_name = 'Подзадача'
+        verbose_name_plural = 'Подзадачи'
 class Regulations(models.Model):
     title = models.CharField(max_length=255, verbose_name='Заголовок')
     description = models.TextField(blank=True, verbose_name='Описание')

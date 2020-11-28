@@ -8,7 +8,7 @@ from django.utils.decorators import method_decorator
 from django.contrib.auth.models import User
 from django.contrib import messages
 
-from .models import Task, Question, Profile
+from .models import Task, Question, Profile, SubTask
 from .forms import TaskForm
 
 @method_decorator(login_required, name='dispatch')
@@ -36,7 +36,9 @@ class Kanban(View):
     def post(self, request):
         data = request.POST
         type = data.get('type')
-
+        
+        # Get data for task
+        # Return json(task)
         if type == 'get':
             task = Task.objects.get(id=request.GET.get('id'))
 
@@ -45,12 +47,37 @@ class Kanban(View):
                 'title': task.title,
                 'description': task.description,
                 'status': task.status,
+                'priority': task.priority,
                 'hours': task.hours,
                 'author': task.author.id,
                 'persons': [person.id for person in task.person.all()],
-                'comments': [{'text': comment.text, 'user': comment.author.profile.fio} for comment in task.comments.all()]
+                'comments': [{'text': comment.text, 'user': comment.author.profile.fio} for comment in task.comments.all()],
+                'subtasks': [{'id': sub.id, 'title': sub.title, 'hours': sub.hours, 'success': sub.success} for sub in task.subtasks.all()]
             })
         
+        # Change status success for sub task
+        # Return {'success': true/false}
+        elif type == 'changeSubTask':
+            try:
+                sub = SubTask.objects.get(id=data.get('id'))
+                sub.success = not sub.success
+                sub.save()
+
+                return JsonResponse({'success': True})
+            except:
+                return JsonResponse({'success': False})
+        
+        # Create sub task from request 
+        # Return {'success': true/false, id: }
+        elif type == 'createSubTask':
+            try:
+                sub = SubTask.objects.create(task=Task.objects.get(id=data.get('id')), title=data.get('title'), hours=data.get('hours'))
+                return JsonResponse({'success': True, 'id': sub.id})
+            except:
+                return JsonResponse({'success': False})
+        
+        # Delete task
+        # Return redirect
         elif type == 'delete':
             task = Task.objects.get(id=request.GET.get('id'))
             task.delete()
