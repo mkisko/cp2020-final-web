@@ -11,6 +11,7 @@ urlpatterns = [
 
     #employees
     path('employees/', Employee.as_view(), name="employee"),
+    path('employeer/', Employeer.as_view(), name="employeer-view"),
 
     # kanban
     path('kanban/', Kanban.as_view(), name='kanban'),
