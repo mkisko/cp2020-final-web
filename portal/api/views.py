@@ -5,7 +5,7 @@ from django.views.decorators.csrf import csrf_exempt
 from django.utils.decorators import method_decorator
 
 from django.http import JsonResponse
-from main.models import Regulations, Role, Task
+from main.models import Regulations, Role, Task, Answer, Question
 
 @method_decorator(csrf_exempt, name='dispatch')
 class VioceParser(View):
@@ -78,6 +78,20 @@ class TaskList(View):
                         'fio': person.profile.fio,
                         'role': person.profile.role.title
                     } for person in task.person.all()],
+            })
+        
+        return JsonResponse(response, safe=False)
+
+class AnswersList(View):
+    def get(self, request, id=None):
+        answers = Answer.objects.all() if not id else Answer.objects.filter(user__id=id)
+
+        response = []
+        for answer in answers:
+            response.append({
+                'user': answer.user.id,
+                'question': answer.question.title,
+                'answer': answer.answer
             })
         
         return JsonResponse(response, safe=False)
