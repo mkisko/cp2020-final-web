@@ -1,12 +1,13 @@
 {% load static %}
-<!DOCTYPE html>
+<!DOCTYPE>
+<html lang="ru">
 <head>
     <meta charset="utf-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover" />
     <meta http-equiv="X-UA-Compatible" content="ie=edge" />
     <title>{% block title %}CP2020-final-rosatom{% endblock %}</title>
-    <link href="{% static 'css/tabler.min.css' %}" rel="stylesheet"/>
-    <link href="{% static 'css/tabler-vendors.min.css' %}" rel="stylesheet"/>
+    <link href="{% static 'css/tabler.min.css' %}" rel="stylesheet" />
+    <link href="{% static 'css/tabler-vendors.min.css' %}" rel="stylesheet" />
 
     <style>
         .alert-error {
@@ -17,59 +18,63 @@
     </style>
     {% block custom_style %}{% endblock %}
 </head>
+
 <body>
-<div class="page">
-    {% include 'menu.html' %}
+    <div class="page">
+        {% include 'menu.html' %}
 
-    <div class="content">
-        <div class="container-xl">
-            <!-- Page title -->
-            <div class="page-header text-white d-print-none">
-                <div class="row align-items-center">
-                    <div class="col">
-                        <!-- Page pre-title -->
-                        <div class="page-pretitle">
-                            {% block content_title %}{% endblock %}
+        <div class="content">
+            <div class="container-xl">
+                <!-- Page title -->
+                <div class="page-header text-white d-print-none">
+                    <div class="row align-items-center">
+                        <div class="col">
+                            <!-- Page pre-title -->
+                            <div class="page-pretitle">
+                                {% block content_title %}{% endblock %}
+                            </div>
+                            <h2 class="page-title">
+                                {% block content_description %}{% endblock %}
+                            </h2>
                         </div>
-                        <h2 class="page-title">
-                            {% block content_description %}{% endblock %}
-                        </h2>
+                        <!-- Page title actions -->
+                        {% block button_page_actions %}{% endblock %}
                     </div>
-                    <!-- Page title actions -->
-                    {% block button_page_actions %}{% endblock %}
                 </div>
+
+                {% block page_content %}{% endblock %}
+
+                <footer class="footer footer-transparent d-print-none">
+                    <div class="container">
+                        <div class="row text-center align-items-center flex-row-reverse">
+                            <div class="col-lg-auto ml-lg-auto">
+                                <ul class="list-inline list-inline-dots mb-0">
+                                    <li class="list-inline-item"><a href="/" class="link-secondary">Главная</a></li>
+                                    <li class="list-inline-item"><a href="/kanban/" class="link-secondary">License</a>
+                                    </li>
+                                    <li class="list-inline-item"><a href="/map" target="_blank"
+                                            class="link-secondary">Цеха</a>
+                                    </li>
+                                    <li class="list-inline-item"><a href="/employees" target="_blank"
+                                            class="link-secondary">Персонал</a></li>
+                                </ul>
+                            </div>
+                            <div class="col-12 col-lg-auto mt-3 mt-lg-0">
+                                <ul class="list-inline list-inline-dots mb-0">
+                                    <li class="list-inline-item">© Цифровой прорыв 2020.
+                                        <a href="/" class="link-secondary">GC Platform</a>
+                                    </li>
+                                </ul>
+                            </div>
+                        </div>
+                    </div>
+                </footer>
             </div>
-
-            {% block page_content %}{% endblock %}
-
-            <footer class="footer footer-transparent d-print-none">
-                <div class="container">
-                    <div class="row text-center align-items-center flex-row-reverse">
-                        <div class="col-lg-auto ml-lg-auto">
-                            <ul class="list-inline list-inline-dots mb-0">
-                                <li class="list-inline-item"><a href="/" class="link-secondary">Главная</a></li>
-                                <li class="list-inline-item"><a href="/kanban/" class="link-secondary">License</a></li>
-                                <li class="list-inline-item"><a href="/map" target="_blank" class="link-secondary">Цеха</a>
-                                </li>
-                                <li class="list-inline-item"><a href="/employees" target="_blank"
-                                                                class="link-secondary">Персонал</a></li>
-                            </ul>
-                        </div>
-                        <div class="col-12 col-lg-auto mt-3 mt-lg-0">
-                            <ul class="list-inline list-inline-dots mb-0">
-                                <li class="list-inline-item">© Цифровой прорыв 2020.
-                                    <a href="/" class="link-secondary">GC Platform</a>
-                                </li>
-                            </ul>
-                        </div>
-                    </div>
-                </div>
-            </footer>
         </div>
     </div>
+
     <script src="{% static 'libs/bootstrap/dist/js/bootstrap.bundle.min.js' %}"></script>
     <script src="https://code.jquery.com/jquery-3.5.1.min.js"></script>
-
     <script src="{% static 'js/tabler.min.js' %}"></script>
 
     {% block scripts %}{% endblock %}
