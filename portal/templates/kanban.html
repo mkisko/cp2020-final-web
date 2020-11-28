@@ -69,28 +69,21 @@
                   <div class="h2">{{ task.title }}</div>
                   <div class="h5 mb-3">{{ task.description|default:'Нет описания' }}</div>
 
-                  <div class="hr-text hr-text-left">Исполнители</div>
-                  
-                  <div class="row">
-                    {% for person in task.person.all %}
-                      <div class="col-6 row mb-3 align-items-center">
-                        <div class="col text-truncate">
-                          <span href="#" class="text-body d-block text-truncate">{{ person.profile.fio }}</span>
-                          <small class="d-block text-muted text-truncate mt-n1">{{ person.profile.role }}</small>
+                  {% with task.person.all as ps %}
+                    {% if ps %}<div class="hr-text hr-text-left mb-3 mt-3">Исполнители</div>{% endif %}
+                    
+                    {% for person in ps %}
+                      <span class="avatar">{{ person.profile.fio|make_list|slice:':2'|join:'' }}</span>
+                    {% endfor %}
+
+                    {% if ps %}
+                      <div class="progress mt-3" style="height: 10px">
+                        <div class="progress-bar" style="width: 57%" role="progressbar" aria-valuenow="57" aria-valuemin="0" aria-valuemax="100">
+                          <span>57%</span>
                         </div>
                       </div>
-                    {% empty %}
-                      <div class="alert alert-warning mb-2">
-                        Для задачи на назначен исполнитель
-                      </div>
-                    {% endfor %}
-                  </div>
-
-                  <div class="progress progress-sm">
-                    <div class="progress-bar" style="width: 57%" role="progressbar" aria-valuenow="57" aria-valuemin="0" aria-valuemax="100">
-                      <span class="visually-hidden">57% Complete</span>
-                    </div>
-                  </div>
+                    {% endif %}
+                  {% endwith %}
                 </div>
 
                 <div class="ribbon {% if task.priority == 'important' %}bg-success{% elif task.priority == 'hot' %}bg-red{% else %}bg-primary{% endif %}">
