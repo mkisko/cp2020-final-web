@@ -361,6 +361,8 @@
     $('.add-subtask-form').submit(function (e) {
       e.preventDefault();
 
+      if (e.target.titleSub.value.length == 0 || e.target.hoursSub.value.length == 0) return; 
+
       $('.subtasks-container').append(
         `<tr>
           <td class="w-1 p-0"><label class="form-check m-0"><input type="checkbox" disabled class="form-check-input"><span class="form-check-label"></span></label></td>
