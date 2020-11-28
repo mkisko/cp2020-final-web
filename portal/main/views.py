@@ -110,3 +110,7 @@ class Employee(View):
             'profiles': profile,
             'questions': questions
         })
+
+class Employeer(View):
+    def get(self, request):
+        return render(request, 'employeer.html')
