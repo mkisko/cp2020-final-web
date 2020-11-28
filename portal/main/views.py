@@ -9,9 +9,10 @@ from django.contrib import messages
 
 from .models import Task, Question, Profile
 from .forms import TaskForm
+
 class Index(View):
     def get(self, request):
-        return render(request, 'main/index.html')
+        return render(request, 'analytics/index.html')
 
 @method_decorator(csrf_exempt, name='dispatch')
 class Kanban(View):
