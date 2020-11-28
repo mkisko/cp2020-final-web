@@ -7,11 +7,22 @@
 Помимо голосового помощника реализованы: методика прогнозирования загрузки персонала, прозрачное отслеживание  исполнения поручений на всех уровнях подчиненности, контроль перемещений и здоровья сотрудников, а также подсчет показателей потерь и эффективности работы цехов для своевременного принятия решений высшим руководством относительно дальнейшей работы предприятия.
 
 ## Технологии
-Phyton Django + Docker, RestAPI (json, xml), iOS (Swift, Alomofire, speech), watchOS (Swift), Figma + Figmamotion, карты Leaflet indoor
+- `Phyton`
+- `Django`
+- `Docker`
+- `Celery`
+- `Redis`
+- `RestAPI (json, xml)`
+- `iOS (Swift, Alomofire, speech)`
+- `watchOS (Swift)`
+- `Figma + Figmamotion`
+- многое другое 
+
 
 ## Репозитории проекта
 - https://github.com/mkisko/cp2020-final-web
 - https://github.com/mkisko/cp2020-final-ios
+
 
 ## Зависимости
 - `ssh`
@@ -28,6 +39,7 @@ Phyton Django + Docker, RestAPI (json, xml), iOS (Swift, Alomofire, speech), wat
 - *Свят* - генерация поручений не только в кейсе, но и самой команде 
 - *Айдин* - после хакатона заказал себе смарт-часы
 - *Кирилл* - посчитал сколько стоит и начал копить
+
 
 ## Требования перед установкой
 Для установки Docker Engine вам потребуется 64-разрядная версия одной из этих версий Debian или Raspbian:
