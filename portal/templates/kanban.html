@@ -326,6 +326,7 @@
           modal.find('form').attr('action', '{% url 'kanban' %}?id=' + response.id);
 
           // subtasks
+          modal.find('.subtasks-container').empty();
           response.subtasks.forEach(function (item) {
             modal.find('.subtasks-container').append(
               `<tr>
