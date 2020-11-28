@@ -1,3 +1,4 @@
+import json
 from django.shortcuts import render, redirect
 from django.views import View
 from django.http import HttpResponse, JsonResponse
@@ -59,7 +60,7 @@ class Kanban(View):
                 form.save()
                 messages.success(request, 'Задача успешно обновлена!')
             else:
-                messages.error(request, 'Произошла ошибка при сохранении!')
+                messages.error(request, 'Произошла ошибка при сохранении! ' + json.dumps(form.errors))
         
         return redirect('kanban')
 

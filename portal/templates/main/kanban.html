@@ -16,7 +16,7 @@
           Действия
         </a>
       </span>
-      <a href="#" class="btn btn-primary d-none d-sm-inline-block" data-toggle="modal" data-target="#modal-task">
+      <a href="#" class="btn btn-primary d-none d-sm-inline-block" data-toggle="modal" data-target="#modal-task-create">
         <svg xmlns="http://www.w3.org/2000/svg" class="icon" width="24" height="24" viewBox="0 0 24 24" stroke-width="2"
           stroke="currentColor" fill="none" stroke-linecap="round" stroke-linejoin="round">
           <path stroke="none" d="M0 0h24v24H0z" fill="none" />
@@ -97,8 +97,8 @@
       </div>
     {% endfor %}
 
-    <div class="modal modal-blur fade" id="modal-task" tabindex="-1" role="dialog" aria-hidden="true">
-      <div class="modal-dialog modal-dialog-centered" style="max-width:1100px" role="document">
+    <div class="modal modal-blur fade" id="modal-task-create" tabindex="-1" role="dialog" aria-hidden="true">
+      <div class="modal-dialog modal-dialog-centered" role="document">
         <form method="post" class="modal-content">
           <div class="modal-header">
             <h5 class="modal-title">Добавление задачи</h5>
@@ -109,8 +109,60 @@
           <input type="hidden" class="form-control" name="author" value="{{ user.id }}">
 
           <div class="modal-body">
+            <div>
+              <label class="form-label">Заголовок задачи</label>
+                <input type="text" class="form-control" name="title">
+              </div>
+
+              <div>
+                <label class="form-label">Описание задачи</label>
+                <textarea class="form-control" name="desscription"></textarea>
+              </div>
+
+              <div>
+                <label class="form-label">Выберите исполнителей</label>
+                <select name="person" class="form-select select-employee-create" multiple
+                  placeholder='Нажмите чтобы выбрать'></select>
+              </div>
+
+              <div>
+                <label class="form-label">Количество часов</label>
+                <input type="text" class="form-control" name="hours">
+              </div>
+
+              <div>
+                <label class="form-label">Статус задачи</label>
+                <select name="status" class="form-select">
+                  <option value="free">Свободная</option>
+                  <option value="active">Активная</option>
+                  <option value="process">В процессе</option>
+                  <option value="ended">Завершенная</option>
+                </select>
+              </div>
+            </div>
+
+            <div class="modal-footer">
+              <button type="button" class="btn mr-auto" data-dismiss="modal">Закрыть</button>
+              <button type="submit" class="btn btn-primary">Сохранить</button>
+            </div>
+          </form>
+        </div>
+      </div>
+    </div>
+
+    <div class="modal modal-blur fade" id="modal-task-edit" tabindex="-1" role="dialog" aria-hidden="true">
+      <div class="modal-dialog modal-dialog-centered" style="max-width:1100px" role="document">
+        <div class="modal-content">
+          <div class="modal-header">
+            <h5 class="modal-title">Добавление задачи</h5>
+            <button type="button" class="btn-close" data-dismiss="modal" aria-label="Close"></button>
+          </div>
+
+          <div class="modal-body">
             <div class="row">
-              <div class="col">
+              <form method="post" class="col form-task-edit">
+                <input type="hidden" class="form-control" name="author" value="{{ user.id }}">
+
                 <div>
                   <label class="form-label">Заголовок задачи</label>
                   <input type="text" class="form-control" name="title">
@@ -123,7 +175,7 @@
 
                 <div>
                   <label class="form-label">Выберите исполнителей</label>
-                  <select name="person" class="form-select select-employee" multiple
+                  <select name="person" class="form-select select-employee-edit" multiple
                     placeholder='Нажмите чтобы выбрать'></select>
                 </div>
 
@@ -141,11 +193,10 @@
                     <option value="ended">Завершенная</option>
                   </select>
                 </div>
-              </div>
+              </form>
 
               <div class="col">
                 <label class="form-label">Коментарии</label>
-
                 <div class="comments-container"></div>
               </div>
             </div>
@@ -153,9 +204,9 @@
 
           <div class="modal-footer">
             <button type="button" class="btn mr-auto" data-dismiss="modal">Закрыть</button>
-            <button type="submit" class="btn btn-primary">Сохранить</button>
+            <button class="btn btn-primary save-task-edit">Сохранить</button>
           </div>
-        </form>
+        </div>
       </div>
     </div>
   </div>
@@ -194,12 +245,13 @@
       }
     };
 
-    let $change = $('.select-employee').selectize(selectizeConf);
+    $('.select-employee-create').selectize(selectizeConf)
+    let $change = $('.select-employee-edit').selectize(selectizeConf);
   </script>
 
   <script>
     $('.show-task-form').click(function () {
-      let modal = $('#modal-task');
+      let modal = $('#modal-task-edit');
 
       $.ajax({
         type: "post",
@@ -229,6 +281,10 @@
       });
 
       modal.modal('show');
-    })
+    });
+
+    $('.save-task-edit').click(function () {
+      $('.form-task-edit').submit();
+    });
   </script>
 {% endblock %}
