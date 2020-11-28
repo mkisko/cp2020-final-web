@@ -55,7 +55,7 @@
                   </div>
                 </div>
               </div>
-              <div class="h2 mb-3"><span class="task-count">{{ tasks.count }}</span> задач</div>
+              <div class="h2 mb-3"><span class="task-count">{{ tasks.count }}</span></div>
             </div>
           </div>
 
@@ -75,7 +75,7 @@
                   </div>
 
                   <div class="h2">{{ task.title }}</div>
-                  <div class="h5 mb-3">{{ task.description }}</div>
+                  <div class="h5 mb-3">{{ task.description|default:'Нет описания' }}</div>
 
                   <div class="d-flex mb-2">
                     <div>Прогресс выполнения</div>
