@@ -12,7 +12,7 @@ from .forms import TaskForm
 
 class Index(View):
     def get(self, request):
-        return render(request, 'analytics/index.html')
+        return render(request, 'index.html')
 
 @method_decorator(csrf_exempt, name='dispatch')
 class Kanban(View):
@@ -20,7 +20,7 @@ class Kanban(View):
         tasks = Task.objects.all()
         users = User.objects.all()
 
-        return render(request, 'main/kanban.html', {
+        return render(request, 'kanban.html', {
             'kanban': {
                 'Сободные': tasks.filter(status='free'),
                 'Активные': tasks.filter(status='active'),
@@ -67,14 +67,14 @@ class Kanban(View):
 
 class Map(View):
     def get(self, request):
-        return render(request, 'map/index.html')
+        return render(request, 'map.html')
 
 class Employee(View):
     def get(self, request):
         profile = Profile.objects.all()
         questions = Question.objects.all()
 
-        return render(request, 'employees/index.html', {
+        return render(request, 'employeers.html', {
             'profiles': profile,
             'questions': questions
         })
