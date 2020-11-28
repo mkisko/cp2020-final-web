@@ -3,13 +3,14 @@ from django.views import View
 from django.http import HttpResponse
 from django.views.decorators.csrf import csrf_exempt
 from django.utils.decorators import method_decorator
+from django.contrib.auth.models import User
 
-from .models import Task
+from .models import Task, Question, Profile
 from .forms import TaskForm
 class Index(View):
     def get(self, request):
         return render(request, 'main/index.html')
-        
+
 @method_decorator(csrf_exempt, name='dispatch')
 class Kanban(View):
     def get(self, request):
@@ -71,4 +72,10 @@ class Map(View):
 
 class Employee(View):
     def get(self, request):
-        return render(request, 'employees/index.html')
+        profile = Profile.objects.all()
+        questions = Question.objects.all()
+
+        return render(request, 'employees/index.html', {
+            'profiles': profile,
+            'questions': questions
+        })
