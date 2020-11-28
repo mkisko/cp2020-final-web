@@ -3,6 +3,7 @@ from django.shortcuts import render, redirect
 from django.views import View
 from django.http import HttpResponse, JsonResponse
 from django.views.decorators.csrf import csrf_exempt
+from django.contrib.auth.decorators import login_required
 from django.utils.decorators import method_decorator
 from django.contrib.auth.models import User
 from django.contrib import messages
@@ -10,10 +11,12 @@ from django.contrib import messages
 from .models import Task, Question, Profile
 from .forms import TaskForm
 
+@method_decorator(login_required, name='dispatch')
 class Index(View):
     def get(self, request):
         return render(request, 'index.html')
 
+@method_decorator(login_required, name='dispatch')
 @method_decorator(csrf_exempt, name='dispatch')
 class Kanban(View):
     def get(self, request):
@@ -65,10 +68,12 @@ class Kanban(View):
         
         return redirect('kanban')
 
+@method_decorator(login_required, name='dispatch')
 class Map(View):
     def get(self, request):
         return render(request, 'map.html')
 
+@method_decorator(login_required, name='dispatch')
 class Employee(View):
     def get(self, request):
         profile = Profile.objects.all()

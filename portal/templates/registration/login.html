@@ -1,10 +1,70 @@
+{% load static %}
 <!DOCTYPE html>
-<html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <title>Title</title>
-</head>
-<body>
 
+<head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover" />
+    <meta http-equiv="X-UA-Compatible" content="ie=edge" />
+    <title>Авторизация</title>
+    <link href="{% static 'css/tabler.min.css' %}" rel="stylesheet" />
+    <link href="{% static 'css/tabler-vendors.min.css' %}" rel="stylesheet" />
+
+    <style>
+        .alert-error {
+            background-color: #fad8d8;
+            border-color: #f7c5c5;
+            color: #892525;
+        }
+    </style>
+</head>
+
+<body>
+    <div class="page">
+        <div class="content">
+            <div class="container-xl">
+                <div class="container-tight py-6">
+                    <form class="card card-md" method="post">
+                        {% csrf_token %}
+
+                        <div class="card-body py-4 p-sm-5">
+                            <h1 class="mt-5">Авторизация</h1>
+
+                            {% if form.errors %}
+                                <div class="alert alert-warning" role="alert">
+                                    Проверьте правильность логина и пароля!
+                                </div>
+                            {% endif %}
+
+                            <div class="mb-3">
+                                <label class="form-label">Имя пользователя</label>
+                                <input type="text" name="username" class="form-control" placeholder="Введите свой логин"
+                                    autocomplete="off">
+                            </div>
+
+                            <div>
+                                <label class="form-label">
+                                    Пароль
+                                </label>
+                                <div class="input-group input-group-flat">
+                                    <input type="password" name="password" class="form-control"
+                                        placeholder="Введите свой пароль">
+                                </div>
+                            </div>
+                        </div>
+
+                        <div class="card-footer d-flex justify-content-end">
+                            <button type="submit" class="btn btn-primary">Войти</button>
+                        </div>
+                    </form>
+                </div>
+
+                {% if user.profile %}
+                    <script>
+                        location = "/"
+                    </script>
+                {% endif %}
+            </div>
+        </div>
+    </div>
 </body>
 </html>
