@@ -62,7 +62,7 @@ $ docker-compose up -d
 $ make boot
 ```
 5. Теперь сервер запущен и доступен по адресу `http://localhost/.
+6. Вы можете использовать команду `make init_db` чтобы загрузить наши тестовые данные в систему. 
 
-
-6. API документация для внешних интеграций:
+## API документация для внешних интеграций:
 - https://rosatomcp2020apidocumentation.docs.apiary.io/#reference

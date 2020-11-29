@@ -1,0 +1,993 @@
+[
+    {
+      "model": "auth.user",
+      "pk": 1,
+      "fields": {
+        "password": "pbkdf2_sha256$216000$V7mMp2vnaVXm$YatNQJmQeZdeI7DCQBUonq6wXS4EtxoxuPqK5x9+Q6A=",
+        "last_login": "2020-11-29T02:42:18.205Z",
+        "is_superuser": true,
+        "username": "admin",
+        "first_name": "",
+        "last_name": "",
+        "email": "",
+        "is_staff": true,
+        "is_active": true,
+        "date_joined": "2020-11-28T13:04:24.967Z",
+        "groups": [],
+        "user_permissions": []
+      }
+    },
+    {
+      "model": "auth.user",
+      "pk": 2,
+      "fields": {
+        "password": "pbkdf2_sha256$216000$jvBu2GXxflDx$YsUCK/qCj/JHE2NV3c9TJnLtPtYLtKSpc7UhHO1+qII=",
+        "last_login": null,
+        "is_superuser": true,
+        "username": "manager",
+        "first_name": "Руководитель",
+        "last_name": "",
+        "email": "",
+        "is_staff": true,
+        "is_active": true,
+        "date_joined": "2020-11-28T13:57:12Z",
+        "groups": [],
+        "user_permissions": []
+      }
+    },
+    {
+      "model": "auth.user",
+      "pk": 3,
+      "fields": {
+        "password": "pbkdf2_sha256$216000$w7UEl5FiVsWI$W76WHoX+yZDYkqKXcRF+Bayf6dOcFMA3WWO2gXqxmwM=",
+        "last_login": null,
+        "is_superuser": false,
+        "username": "chief",
+        "first_name": "",
+        "last_name": "",
+        "email": "",
+        "is_staff": false,
+        "is_active": true,
+        "date_joined": "2020-11-28T14:04:40.229Z",
+        "groups": [],
+        "user_permissions": []
+      }
+    },
+    {
+      "model": "auth.user",
+      "pk": 4,
+      "fields": {
+        "password": "pbkdf2_sha256$216000$ExZXeuZK990Q$XPjdu5W3rphM9QfHBVZfW63wnh9CYKf6AmTDuH5+SaI=",
+        "last_login": null,
+        "is_superuser": false,
+        "username": "foreman",
+        "first_name": "",
+        "last_name": "",
+        "email": "",
+        "is_staff": false,
+        "is_active": true,
+        "date_joined": "2020-11-28T14:06:43.052Z",
+        "groups": [],
+        "user_permissions": []
+      }
+    },
+    {
+      "model": "auth.user",
+      "pk": 5,
+      "fields": {
+        "password": "pbkdf2_sha256$216000$vqreb59fcXmc$/Cb3bMMKO3I9WDvtyHfwqryChej7Gb1eFlhjK0dey+M=",
+        "last_login": null,
+        "is_superuser": false,
+        "username": "worker",
+        "first_name": "",
+        "last_name": "",
+        "email": "",
+        "is_staff": false,
+        "is_active": true,
+        "date_joined": "2020-11-28T14:07:59.394Z",
+        "groups": [],
+        "user_permissions": []
+      }
+    },
+    {
+      "model": "auth.user",
+      "pk": 6,
+      "fields": {
+        "password": "pbkdf2_sha256$216000$yosgoHbSwulZ$7Jy8//Htk0PuzuaBqHuot54HFw08TkXncdXtwojxH6A=",
+        "last_login": null,
+        "is_superuser": false,
+        "username": "test1",
+        "first_name": "",
+        "last_name": "",
+        "email": "",
+        "is_staff": false,
+        "is_active": true,
+        "date_joined": "2020-11-29T04:26:21.446Z",
+        "groups": [],
+        "user_permissions": []
+      }
+    },
+    {
+      "model": "sessions.session",
+      "pk": "0968tds21ml9vdmdpytvr37j52jbrf7j",
+      "fields": {
+        "session_data": ".eJxVjDsOwyAQBe9CHSEwCywp0_sMaPkFJxGWjF1FuXuE5CJp38y8N_N07NUfPW9-SezKJLv8boHiM7cB0oPafeVxbfu2BD4UftLO5zXl1-10_w4q9TrqSKRKBgRtEVBoF4OSTkwFCGlSIoORRVpNxiirMGUJBZKTWkBAF9jnC9LDNxg:1kj10K:tbWIV-MtyccIgesUkRZ6Kf_dRS_5lYSiJbrgNBJUXJM",
+        "expire_date": "2020-12-12T14:15:12.722Z"
+      }
+    },
+    {
+      "model": "sessions.session",
+      "pk": "15ko9idfwicll7o5op3hsoxok966uf00",
+      "fields": {
+        "session_data": ".eJxVjDsOwyAQBe9CHSEwCywp0_sMaPkFJxGWjF1FuXuE5CJp38y8N_N07NUfPW9-SezKJLv8boHiM7cB0oPafeVxbfu2BD4UftLO5zXl1-10_w4q9TrqSKRKBgRtEVBoF4OSTkwFCGlSIoORRVpNxiirMGUJBZKTWkBAF9jnC9LDNxg:1kjCfK:ByIb69dakyDWpNmBEW3GZXItUCrquBjfwjgF0narrLg",
+        "expire_date": "2020-12-13T02:42:18.213Z"
+      }
+    },
+    {
+      "model": "sessions.session",
+      "pk": "1t04u55o9s1lfrcg88e1dfmjgbtm5gjm",
+      "fields": {
+        "session_data": ".eJxVjDsOwyAQBe9CHSEwCywp0_sMaPkFJxGWjF1FuXuE5CJp38y8N_N07NUfPW9-SezKJLv8boHiM7cB0oPafeVxbfu2BD4UftLO5zXl1-10_w4q9TrqSKRKBgRtEVBoF4OSTkwFCGlSIoORRVpNxiirMGUJBZKTWkBAF9jnC9LDNxg:1kj0gL:Oe8MB3vuZTRxOw8GzCEYyQ9IU-TQ22waXRaesDK6LYQ",
+        "expire_date": "2020-12-12T13:54:33.423Z"
+      }
+    },
+    {
+      "model": "sessions.session",
+      "pk": "a8p3v0h4s4lo26mlk0frbvixicfafobd",
+      "fields": {
+        "session_data": ".eJxVjDsOwyAQBe9CHSEwCywp0_sMaPkFJxGWjF1FuXuE5CJp38y8N_N07NUfPW9-SezKJLv8boHiM7cB0oPafeVxbfu2BD4UftLO5zXl1-10_w4q9TrqSKRKBgRtEVBoF4OSTkwFCGlSIoORRVpNxiirMGUJBZKTWkBAF9jnC9LDNxg:1kjAIr:7oAjc9-XtX6WsOHqtswW6OaUUrx7r0b5XccUZJwioK8",
+        "expire_date": "2020-12-13T00:10:57.669Z"
+      }
+    },
+    {
+      "model": "sessions.session",
+      "pk": "awo3eiqsl0kpkytydg1dwgb8ft9hfj6v",
+      "fields": {
+        "session_data": ".eJxVjDsOwyAQBe9CHSEwCywp0_sMaPkFJxGWjF1FuXuE5CJp38y8N_N07NUfPW9-SezKJLv8boHiM7cB0oPafeVxbfu2BD4UftLO5zXl1-10_w4q9TrqSKRKBgRtEVBoF4OSTkwFCGlSIoORRVpNxiirMGUJBZKTWkBAF9jnC9LDNxg:1kj7wK:60dAYqys1Dt3F46coHc5IpWQT5uiOIiwJlKhi_fZ1YQ",
+        "expire_date": "2020-12-12T21:39:32.225Z"
+      }
+    },
+    {
+      "model": "sessions.session",
+      "pk": "fg0g8i89bdeoors0hfb1c4iluce4fjfp",
+      "fields": {
+        "session_data": ".eJxVjDsOwyAQBe9CHSEwCywp0_sMaPkFJxGWjF1FuXuE5CJp38y8N_N07NUfPW9-SezKJLv8boHiM7cB0oPafeVxbfu2BD4UftLO5zXl1-10_w4q9TrqSKRKBgRtEVBoF4OSTkwFCGlSIoORRVpNxiirMGUJBZKTWkBAF9jnC9LDNxg:1kj3Pj:3XR6XYwdsXbx1JzPo8Gfc7FvI9hji1yq-6Z08ls80jY",
+        "expire_date": "2020-12-12T16:49:35.425Z"
+      }
+    },
+    {
+      "model": "sessions.session",
+      "pk": "qt36f5lug7ykmdjjvpb6ay9c9ov8bxl4",
+      "fields": {
+        "session_data": ".eJxVjDsOwyAQBe9CHSEwCywp0_sMaPkFJxGWjF1FuXuE5CJp38y8N_N07NUfPW9-SezKJLv8boHiM7cB0oPafeVxbfu2BD4UftLO5zXl1-10_w4q9TrqSKRKBgRtEVBoF4OSTkwFCGlSIoORRVpNxiirMGUJBZKTWkBAF9jnC9LDNxg:1kj1He:ARkbM1E-kRvvCSQhzZi0Qz9ZhdCDsn2MFL3UCoX1LjQ",
+        "expire_date": "2020-12-12T14:33:06.276Z"
+      }
+    },
+    {
+      "model": "sessions.session",
+      "pk": "vunqhg9hvx3v4crcpp5mobh5tfnaplja",
+      "fields": {
+        "session_data": ".eJxVjDsOwyAQBe9CHSEwCywp0_sMaPkFJxGWjF1FuXuE5CJp38y8N_N07NUfPW9-SezKJLv8boHiM7cB0oPafeVxbfu2BD4UftLO5zXl1-10_w4q9TrqSKRKBgRtEVBoF4OSTkwFCGlSIoORRVpNxiirMGUJBZKTWkBAF9jnC9LDNxg:1kj7Jc:OGdDbmrebSCA_a4yr9pCSfe3GwWpvNvr6e448oWrfjU",
+        "expire_date": "2020-12-12T20:59:32.253Z"
+      }
+    },
+    {
+      "model": "sessions.session",
+      "pk": "z0l1d18gdtc3m8kpoz6l2gz94yn0719q",
+      "fields": {
+        "session_data": ".eJxVjDsOwyAQBe9CHSEwCywp0_sMaPkFJxGWjF1FuXuE5CJp38y8N_N07NUfPW9-SezKJLv8boHiM7cB0oPafeVxbfu2BD4UftLO5zXl1-10_w4q9TrqSKRKBgRtEVBoF4OSTkwFCGlSIoORRVpNxiirMGUJBZKTWkBAF9jnC9LDNxg:1kj6qc:Lf1ptUMpMxvboYMiXmFytyiMXoc5_1QrOOALjj0kTYA",
+        "expire_date": "2020-12-12T20:29:34.572Z"
+      }
+    },
+    {
+      "model": "main.role",
+      "pk": 1,
+      "fields": {
+        "title": "Администратор",
+        "skills": ""
+      }
+    },
+    {
+      "model": "main.role",
+      "pk": 2,
+      "fields": {
+        "title": "Менеджер",
+        "skills": ""
+      }
+    },
+    {
+      "model": "main.role",
+      "pk": 3,
+      "fields": {
+        "title": "Начальник",
+        "skills": ""
+      }
+    },
+    {
+      "model": "main.role",
+      "pk": 4,
+      "fields": {
+        "title": "Бригадир",
+        "skills": ""
+      }
+    },
+    {
+      "model": "main.role",
+      "pk": 5,
+      "fields": {
+        "title": "Рабочий",
+        "skills": ""
+      }
+    },
+    {
+      "model": "main.role",
+      "pk": 6,
+      "fields": {
+        "title": "Инженер-технолог",
+        "skills": ""
+      }
+    },
+    {
+      "model": "main.role",
+      "pk": 7,
+      "fields": {
+        "title": "Токарь-оператор ЧПУ",
+        "skills": ""
+      }
+    },
+    {
+      "model": "main.role",
+      "pk": 8,
+      "fields": {
+        "title": "Фрезеровщик-оператор ЧПУ",
+        "skills": ""
+      }
+    },
+    {
+      "model": "main.role",
+      "pk": 9,
+      "fields": {
+        "title": "Сверловщик-оператор ЧПУ",
+        "skills": ""
+      }
+    },
+    {
+      "model": "main.role",
+      "pk": 10,
+      "fields": {
+        "title": "Наладчик оборудования",
+        "skills": ""
+      }
+    },
+    {
+      "model": "main.role",
+      "pk": 11,
+      "fields": {
+        "title": "Крановщик",
+        "skills": ""
+      }
+    },
+    {
+      "model": "main.role",
+      "pk": 12,
+      "fields": {
+        "title": "Электрик-ремонтник",
+        "skills": ""
+      }
+    },
+    {
+      "model": "main.role",
+      "pk": 13,
+      "fields": {
+        "title": "Техник",
+        "skills": ""
+      }
+    },
+    {
+      "model": "main.role",
+      "pk": 14,
+      "fields": {
+        "title": "Сменный мастер",
+        "skills": ""
+      }
+    },
+    {
+      "model": "main.role",
+      "pk": 15,
+      "fields": {
+        "title": "Заместитель начальника цеха",
+        "skills": ""
+      }
+    },
+    {
+      "model": "main.profile",
+      "pk": 1,
+      "fields": {
+        "user": 1,
+        "fio": "Admin",
+        "role": 1,
+        "hours_per_day": 8
+      }
+    },
+    {
+      "model": "main.profile",
+      "pk": 2,
+      "fields": {
+        "user": 2,
+        "fio": "Куценко Павел",
+        "role": 2,
+        "hours_per_day": 8
+      }
+    },
+    {
+      "model": "main.profile",
+      "pk": 3,
+      "fields": {
+        "user": 3,
+        "fio": "Святослав Державин",
+        "role": 3,
+        "hours_per_day": 8
+      }
+    },
+    {
+      "model": "main.profile",
+      "pk": 4,
+      "fields": {
+        "user": 4,
+        "fio": "Каплин Кирилл",
+        "role": 4,
+        "hours_per_day": 8
+      }
+    },
+    {
+      "model": "main.profile",
+      "pk": 5,
+      "fields": {
+        "user": 5,
+        "fio": "Айдин",
+        "role": 5,
+        "hours_per_day": 8
+      }
+    },
+    {
+      "model": "main.profile",
+      "pk": 6,
+      "fields": {
+        "user": 6,
+        "fio": "Test1",
+        "role": 13,
+        "hours_per_day": 12
+      }
+    },
+    {
+      "model": "main.task",
+      "pk": 1,
+      "fields": {
+        "title": "Нанесение 1 порции герметика",
+        "description": "Перед установкой подоконной плиты следует сначала нанести на торцы в месте контакта с оконной коробкой и откосами слой качественного однокомпонентного или\r\nдвухкомпонентного герметика с помощью шпателя или\r\nшприца.\r\nПри большом раскрытии стыка герметик следует наносить в несколько приемов.\r\nПосле укладки слоя герметика, его следует разровнять с помощью деревянной расшивки, смоченной водой",
+        "status": "ended",
+        "priority": 0,
+        "hours": 4,
+        "author": 1,
+        "created": "2020-11-28T14:32:07.164Z",
+        "updated": "2020-11-29T00:28:16.631Z",
+        "person": [
+          4,
+          5
+        ]
+      }
+    },
+    {
+      "model": "main.task",
+      "pk": 2,
+      "fields": {
+        "title": "Проведение инструктажей по охране труда",
+        "description": "В течение инструктажей будут изучены:\r\n\r\n1. Общие сведения о предприятии.\r\n2. Основные положения законодательства о труде. Правовое регулирование охраны труда.\r\n3. Организация работы по охране труда на предприятии. Ведомственный, государственный надзор и общественный контроль за состоянием охраны труда.\r\n4. Общие правила поведения работающих на территории предприятия, в производственных и вспомогательных помещениях. Расположение основных цехов, служб, вспомогательных помещений.\r\n5. Основные опасные и вредные производственные факторы. Методы и средства предупреждения несчастных случаев и профессиональных заболеваний: средства коллективной защиты, плакаты, знаки безопасности, сигнализация. Основные требования по предупреждению электротравматизма.\r\n6. Средства индивидуальной защиты. Порядок и нормы выдачи СИЗ, сроки носки.\r\n7. Обстоятельства и причины отдельных характерных несчастных случаев, аварий, пожаров, происшедших на предприятии и других аналогичных производствах из-за нарушения требований безопасности.\r\n8. Порядок расследования и оформления несчастных случаев и профессиональных заболеваний.\r\n9. Пожарная безопасность. Способы и средства предотвращения пожаров, взрывов, аварий. Действия персонала при их возникновении.\r\n10. Первая помощь пострадавшим. Действия работников при возникновении несчастного случая на участке, в цехе.",
+        "status": "process",
+        "priority": 0,
+        "hours": 1,
+        "author": 1,
+        "created": "2020-11-28T15:56:11.736Z",
+        "updated": "2020-11-29T00:46:26.190Z",
+        "person": [
+          2,
+          3,
+          4
+        ]
+      }
+    },
+    {
+      "model": "main.task",
+      "pk": 3,
+      "fields": {
+        "title": "Проведение вводного инструктажа по технике безопасности",
+        "description": "Изучение:\r\n- законодательных актов и локальных нормативов об охране труда; \r\n- правил поведения на работе и во время чрезвычайных ситуаций; \r\n- информации о средствах индивидуальной защиты (СИЗ).",
+        "status": "process",
+        "priority": 0,
+        "hours": 1,
+        "author": 1,
+        "created": "2020-11-28T15:56:46.369Z",
+        "updated": "2020-11-29T00:45:14.401Z",
+        "person": [
+          2,
+          4
+        ]
+      }
+    },
+    {
+      "model": "main.task",
+      "pk": 4,
+      "fields": {
+        "title": "Замена матрицы экрана отображения",
+        "description": "",
+        "status": "ended",
+        "priority": 1,
+        "hours": 2,
+        "author": 1,
+        "created": "2020-11-28T17:01:36.054Z",
+        "updated": "2020-11-29T04:41:31.260Z",
+        "person": [
+          2,
+          3,
+          5
+        ]
+      }
+    },
+    {
+      "model": "main.task",
+      "pk": 5,
+      "fields": {
+        "title": "Подготовка поверхностей стыков стеновых панелей",
+        "description": "Необходимо тщательно провести подготовку поверхностей стыков стеновых панелей:\r\n- очистить грани панелей от пыли, грязи, остатков раствора и других загрязнений, а\r\nтакже инея, снега и наледи;\r\n- просушить и прогреть поверхности стыка путем продувки горячим воздухом.",
+        "status": "free",
+        "priority": 0,
+        "hours": 4,
+        "author": 1,
+        "created": "2020-11-28T17:01:55.856Z",
+        "updated": "2020-11-29T00:20:24.439Z",
+        "person": [
+          1,
+          2,
+          3,
+          4,
+          5
+        ]
+      }
+    },
+    {
+      "model": "main.task",
+      "pk": 6,
+      "fields": {
+        "title": "Приготовление герметика",
+        "description": "Двухкомпонентные вулканизующиеся герметики приготавливают путем смешивания\r\nосновной и отверждающей паст. Их соотношение указывается в паспорте, сопровождающем каждую партию герметика.\r\nСмешивание компонентов герметика проводят в теплом помещении (будке герметчика) в рабочей емкости с помощью мешалки или электродрели со специальной насадкой в течение\r\n8-10 минут до получения однородной массы. Температура приготовления герметика (20 ± 5) °С. Время перемешивания компонентов 8-10 мин. Если температура в помещении снизилась до +15 °С, время перемешивания следует увеличить до 15-20 мин. При перемешивании герметика насадку следует перемещать от центра емкости к краям и обратно.",
+        "status": "process",
+        "priority": 0,
+        "hours": 4,
+        "author": 1,
+        "created": "2020-11-28T17:08:55.196Z",
+        "updated": "2020-11-29T04:42:07.897Z",
+        "person": [
+          4,
+          5
+        ]
+      }
+    },
+    {
+      "model": "main.task",
+      "pk": 7,
+      "fields": {
+        "title": "Заочно познакомиться с жюри финала  \"Цифрового Прорыва\"",
+        "description": "Dear Members of Jury, \r\n\r\nThank You for Your attention!\r\n\r\nBest wishes,\r\nTeam \"GC Platform\"",
+        "status": "active",
+        "priority": 0,
+        "hours": 1,
+        "author": 1,
+        "created": "2020-11-28T20:30:51.911Z",
+        "updated": "2020-11-29T00:59:33.629Z",
+        "person": [
+          1,
+          2,
+          3,
+          4,
+          5
+        ]
+      }
+    },
+    {
+      "model": "main.task",
+      "pk": 8,
+      "fields": {
+        "title": "Ознакомление с технической документацией",
+        "description": "",
+        "status": "free",
+        "priority": 0,
+        "hours": 1,
+        "author": 3,
+        "created": "2020-11-28T21:54:50.399Z",
+        "updated": "2020-11-28T22:39:41.362Z",
+        "person": [
+          2
+        ]
+      }
+    },
+    {
+      "model": "main.task",
+      "pk": 9,
+      "fields": {
+        "title": "Наладка станка",
+        "description": "Детально изучить паспорт и руководство по обслуживанию станка. \r\nОзнакомиться со всеми частями станка, принципами его работы, условиями запуска и остановки, правилами по эксплуатации этого устройства. \r\nИзучить правила техники безопасности при работе с данным станком.\r\nПодготовить рабочее место в соответствии с правилами.\r\nРасположить инвентарь и инструменты рационально и удобно.\r\nПосле необходимо удалить антикоррозионное покрытие со станка, если это требуется, и смазать агрегат в соответствии с правилами эксплуатации.\r\nПодготовить системы электрооборудования к пуску по всем правилам.\r\nПерепроверить состояние предохранительного клапана.\r\nПроверить и подготовить к началу работы гидропривод, определить направление вращения электродвигателей гидростанций, осмотреть фильтры и наполнить трубопроводы маслом, удалив из гидросистемы воздух, а также настроить клапаны.\r\nДалее нужно провести проверку подачи смазочно-охлаждающей жидкости и сжатого воздуха.\r\nОсмотреть станок. Убедиться, что все его направляющие, столы, суппорты и прочие узлы не забиты, не ржавеют и не имеют других подобных дефектов.\r\nСверить комплект измерительных, режущих и вспомогательных инструментов в соответствии с номенклатурой в операционной технической карте. Пересчитать инструменты и сверить количество.\r\nПосле проверки оборудования и устранения всех обнаруженных недостатков станка производится пробный холостой пуск. Аппарат должен будет проработать в течение 2-4 часов.\r\nВо время этого запуска проверяется поступление масла в необходимые точки аппарата, проверяют станок на наличие утечек масла в местах соединений трубопроводов, стыков, крышек и т.д.\r\nСравнить давление масла в гидросистемах и давление воздуха в пневматических системах.\r\nПроверить работу кнопок «Пуск» и «Стоп» и работу всех лампочек и блокировку узлов оборудования.\r\nСтол проверяют на отсутствие рывков и заклинивания, движение должно быть плавным. Также проверяется ход всех движущихся узлов и на предмет заедания и шума проверяют зубчатые, цепные, червячные и прочие передачи.\r\nПосле проведения наладки и устранения всех возможных неполадок, руководствуясь операционной картой, задаётся определённая частота вращения шпинделя и скорость подачи при перемещении подвижных узлов станка (например, суппортов, столов и т.д.).\r\nПроизводят настройку коробки скоростей и подач.\r\nПроизводится расстановка гидравлических, пневматических и электрических узлов и преобразователей управления работой узлов, устанавливаются зажимные патроны, и выверяется правильность расположения режущего инструмента в соответствии с операционным чертежом.\r\nПри запуске выполняются переходы в режимы, начиная с четвёртого, кроме седьмого и восьмого. Между сменами должно быть более 30 минут.",
+        "status": "ended",
+        "priority": 2,
+        "hours": 6,
+        "author": 2,
+        "created": "2020-11-28T21:59:47.185Z",
+        "updated": "2020-11-29T02:38:37.915Z",
+        "person": [
+          5
+        ]
+      }
+    },
+    {
+      "model": "main.task",
+      "pk": 10,
+      "fields": {
+        "title": "Оценить состояние технического оборудования N",
+        "description": "Проверить соответствие технического состояния оборудования требованиям безопасности для жизни и здоровья людей, имущества и окружающей среды, установленным стандартами, инструкциями по эксплуатации оборудования и другими нормативными документами",
+        "status": "process",
+        "priority": 1,
+        "hours": 8,
+        "author": 2,
+        "created": "2020-11-29T00:55:36.016Z",
+        "updated": "2020-11-29T00:55:36.016Z",
+        "person": [
+          5
+        ]
+      }
+    },
+    {
+      "model": "main.task",
+      "pk": 11,
+      "fields": {
+        "title": "Формовка крупных отливок",
+        "description": "",
+        "status": "ended",
+        "priority": 2,
+        "hours": 6,
+        "author": 1,
+        "created": "2020-11-29T00:56:09.585Z",
+        "updated": "2020-11-29T01:37:08.133Z",
+        "person": [
+          5
+        ]
+      }
+    },
+    {
+      "model": "main.task",
+      "pk": 12,
+      "fields": {
+        "title": "Контроль за расходованием материалов",
+        "description": "1. Учет органами снабжения всех отпускаемых цехам и участкам материалов.\r\n\r\n2. Учет отпускаемых материалов бригадам и отдельным рабочим непосредственно в цехах и на участках.\r\n\r\n3. Предоставление цехами и участками в бухгалтерию отчетности о расходовании полученных со складов материалов.\r\n\r\n4. Определение ожидаемого остатка материалов в цехе по результатам работы за прошлый месяц и учет его при выделении лимита на будущий месяц.\r\n\r\n5. Установление строгого порядка и применение специальной документации при отпуске материалов сверх выделенного лимита.\r\n\r\n6. Широкое освещение результатов расходования материалов, разработка системы премирования за экономию материалов и взысканий за их перерасход.",
+        "status": "ended",
+        "priority": 1,
+        "hours": 3,
+        "author": 3,
+        "created": "2020-11-29T00:59:05.906Z",
+        "updated": "2020-11-29T00:59:05.906Z",
+        "person": [
+          4
+        ]
+      }
+    },
+    {
+      "model": "main.task",
+      "pk": 13,
+      "fields": {
+        "title": "Приготовление рабочих реагентов",
+        "description": "",
+        "status": "process",
+        "priority": 1,
+        "hours": 2,
+        "author": 4,
+        "created": "2020-11-29T01:15:33.582Z",
+        "updated": "2020-11-29T01:15:33.582Z",
+        "person": [
+          5
+        ]
+      }
+    },
+    {
+      "model": "main.task",
+      "pk": 14,
+      "fields": {
+        "title": "Подключить новое электрооборудование Z",
+        "description": "Ознакомиться с габаритами и техническими условиями работы нового электрооборудования Z.\r\n\r\nПроверить на возможность подключения.\r\n\r\nВ случае отсутствия такой возможности, ее найти.\r\n\r\nВ случае наличия, завершить подключение.",
+        "status": "active",
+        "priority": 2,
+        "hours": 5,
+        "author": 4,
+        "created": "2020-11-29T01:52:27.676Z",
+        "updated": "2020-11-29T01:52:27.676Z",
+        "person": [
+          2,
+          5
+        ]
+      }
+    },
+    {
+      "model": "main.task",
+      "pk": 15,
+      "fields": {
+        "title": "Работа на режимном объекте \"Дельта\"",
+        "description": "Выполнение рабочих поручений на режимном объекте \"Дельта\"",
+        "status": "active",
+        "priority": 1,
+        "hours": 8,
+        "author": 4,
+        "created": "2020-11-29T01:54:43.313Z",
+        "updated": "2020-11-29T01:54:43.313Z",
+        "person": [
+          2
+        ]
+      }
+    },
+    {
+      "model": "main.task",
+      "pk": 16,
+      "fields": {
+        "title": "Нанесение 1 порции герметика",
+        "description": "",
+        "status": "free",
+        "priority": 2,
+        "hours": 4,
+        "author": 1,
+        "created": "2020-11-29T02:21:56.650Z",
+        "updated": "2020-11-29T02:21:56.650Z",
+        "person": [
+          4,
+          5
+        ]
+      }
+    },
+    {
+      "model": "main.task",
+      "pk": 17,
+      "fields": {
+        "title": "Нанесение 1 порции герметика",
+        "description": "",
+        "status": "free",
+        "priority": 1,
+        "hours": 4,
+        "author": 1,
+        "created": "2020-11-29T02:26:28.084Z",
+        "updated": "2020-11-29T02:26:28.084Z",
+        "person": [
+          4,
+          5
+        ]
+      }
+    },
+    {
+      "model": "main.task",
+      "pk": 18,
+      "fields": {
+        "title": "Нанесение 1 порции герметика",
+        "description": "",
+        "status": "free",
+        "priority": 1,
+        "hours": 4,
+        "author": 1,
+        "created": "2020-11-29T02:30:47.178Z",
+        "updated": "2020-11-29T02:30:47.178Z",
+        "person": [
+          4,
+          5
+        ]
+      }
+    },
+    {
+      "model": "main.task",
+      "pk": 19,
+      "fields": {
+        "title": "Нанесение 1 порции герметика",
+        "description": "",
+        "status": "free",
+        "priority": 0,
+        "hours": 4,
+        "author": 1,
+        "created": "2020-11-29T02:39:48.819Z",
+        "updated": "2020-11-29T02:39:48.819Z",
+        "person": [
+          4,
+          5
+        ]
+      }
+    },
+    {
+      "model": "main.task",
+      "pk": 20,
+      "fields": {
+        "title": "таска",
+        "description": "",
+        "status": "free",
+        "priority": 0,
+        "hours": 4,
+        "author": 1,
+        "created": "2020-11-29T03:07:41.526Z",
+        "updated": "2020-11-29T03:07:41.526Z",
+        "person": []
+      }
+    },
+    {
+      "model": "main.task",
+      "pk": 21,
+      "fields": {
+        "title": "из API",
+        "description": "test description",
+        "status": "active",
+        "priority": 0,
+        "hours": 3,
+        "author": 1,
+        "created": "2020-11-29T03:09:39.525Z",
+        "updated": "2020-11-29T03:09:39.525Z",
+        "person": [
+          2,
+          3
+        ]
+      }
+    },
+    {
+      "model": "main.subtask",
+      "pk": 4,
+      "fields": {
+        "task": 4,
+        "title": "Замена",
+        "hours": 1,
+        "success": true,
+        "created": "2020-11-28T22:41:06.124Z",
+        "updated": "2020-11-29T00:33:58.493Z"
+      }
+    },
+    {
+      "model": "main.subtask",
+      "pk": 5,
+      "fields": {
+        "task": 6,
+        "title": "Нанести порцию герметика",
+        "hours": 2,
+        "success": true,
+        "created": "2020-11-28T22:41:26.481Z",
+        "updated": "2020-11-29T00:31:40.012Z"
+      }
+    },
+    {
+      "model": "main.subtask",
+      "pk": 6,
+      "fields": {
+        "task": 1,
+        "title": "Разровнять слой герметика с помощью деревянной расшивки",
+        "hours": 1,
+        "success": true,
+        "created": "2020-11-28T22:41:40.042Z",
+        "updated": "2020-11-29T00:32:02.182Z"
+      }
+    },
+    {
+      "model": "main.subtask",
+      "pk": 7,
+      "fields": {
+        "task": 9,
+        "title": "Детально изучить паспорт и руководство по обслуживанию станка",
+        "hours": 2,
+        "success": true,
+        "created": "2020-11-28T22:41:51.691Z",
+        "updated": "2020-11-29T02:32:57.966Z"
+      }
+    },
+    {
+      "model": "main.subtask",
+      "pk": 15,
+      "fields": {
+        "task": 6,
+        "title": "Смешивание компонентов герметика",
+        "hours": 1,
+        "success": false,
+        "created": "2020-11-28T22:42:38.278Z",
+        "updated": "2020-11-29T04:42:06.877Z"
+      }
+    },
+    {
+      "model": "main.subtask",
+      "pk": 16,
+      "fields": {
+        "task": 9,
+        "title": "Ознакомиться со всеми частями станка",
+        "hours": 1,
+        "success": true,
+        "created": "2020-11-29T02:32:48.323Z",
+        "updated": "2020-11-29T02:35:20.093Z"
+      }
+    },
+    {
+      "model": "main.subtask",
+      "pk": 17,
+      "fields": {
+        "task": 9,
+        "title": "Изучить правила техники безопасности при работе с данным станком",
+        "hours": 1,
+        "success": true,
+        "created": "2020-11-29T02:35:52.979Z",
+        "updated": "2020-11-29T02:35:52.979Z"
+      }
+    },
+    {
+      "model": "main.subtask",
+      "pk": 18,
+      "fields": {
+        "task": 9,
+        "title": "Подготовить системы электрооборудования к пуску по всем правилам.",
+        "hours": 2,
+        "success": true,
+        "created": "2020-11-29T02:36:50.258Z",
+        "updated": "2020-11-29T02:36:50.259Z"
+      }
+    },
+    {
+      "model": "main.regulations",
+      "pk": 1,
+      "fields": {
+        "title": "Нанесение 1 порции герметика",
+        "description": "Согласно ТУ 5772-005-03993339-96",
+        "hours": 4,
+        "roles": [
+          4,
+          5
+        ]
+      }
+    },
+    {
+      "model": "main.regulations",
+      "pk": 2,
+      "fields": {
+        "title": "Техника безопасности",
+        "description": "Инструктаж по технике безопасности",
+        "hours": 2,
+        "roles": [
+          2,
+          3,
+          4
+        ]
+      }
+    },
+    {
+      "model": "main.regulations",
+      "pk": 3,
+      "fields": {
+        "title": "Охрана труда",
+        "description": "Инструктаж по охране труда",
+        "hours": 1,
+        "roles": [
+          2,
+          3,
+          4
+        ]
+      }
+    },
+    {
+      "model": "main.comment",
+      "pk": 1,
+      "fields": {
+        "task": 1,
+        "author": 5,
+        "text": "Не понимаю как работать с герметиком"
+      }
+    },
+    {
+      "model": "main.comment",
+      "pk": 2,
+      "fields": {
+        "task": 1,
+        "author": 3,
+        "text": "Очень просто! Погугли"
+      }
+    },
+    {
+      "model": "main.comment",
+      "pk": 3,
+      "fields": {
+        "task": 3,
+        "author": 2,
+        "text": "Задача кажется относительно легкой"
+      }
+    },
+    {
+      "model": "main.question",
+      "pk": 1,
+      "fields": {
+        "title": "Что сделал?"
+      }
+    },
+    {
+      "model": "main.question",
+      "pk": 2,
+      "fields": {
+        "title": "Что будешь делать?"
+      }
+    },
+    {
+      "model": "main.question",
+      "pk": 3,
+      "fields": {
+        "title": "Есть ли вопросы по задачам?"
+      }
+    },
+    {
+      "model": "main.answer",
+      "pk": 1,
+      "fields": {
+        "user": 5,
+        "question": 1,
+        "answer": "Пока что не начинал",
+        "created": "2020-11-29T00:45:43.331Z"
+      }
+    },
+    {
+      "model": "main.answer",
+      "pk": 2,
+      "fields": {
+        "user": 5,
+        "question": 2,
+        "answer": "Буду делать первую задачу",
+        "created": "2020-11-29T00:45:43.331Z"
+      }
+    },
+    {
+      "model": "main.answer",
+      "pk": 3,
+      "fields": {
+        "user": 5,
+        "question": 3,
+        "answer": "Да. Как использовать герметик?",
+        "created": "2020-11-29T00:45:43.331Z"
+      }
+    },
+    {
+      "model": "main.answer",
+      "pk": 4,
+      "fields": {
+        "user": 1,
+        "question": 1,
+        "answer": "Подготовил отчет",
+        "created": "2020-11-29T00:45:43.331Z"
+      }
+    },
+    {
+      "model": "main.answer",
+      "pk": 5,
+      "fields": {
+        "user": 1,
+        "question": 2,
+        "answer": "Проверка работы системы",
+        "created": "2020-11-29T00:45:43.331Z"
+      }
+    },
+    {
+      "model": "main.answer",
+      "pk": 6,
+      "fields": {
+        "user": 4,
+        "question": 1,
+        "answer": "Проверял работу",
+        "created": "2020-11-29T00:45:43.331Z"
+      }
+    },
+    {
+      "model": "main.answer",
+      "pk": 7,
+      "fields": {
+        "user": 2,
+        "question": 3,
+        "answer": "Вопросов нет",
+        "created": "2020-11-29T00:45:43.331Z"
+      }
+    }
+    ]

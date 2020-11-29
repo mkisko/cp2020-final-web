@@ -8,4 +8,7 @@ static:
 admin:
 	docker-compose exec portal python -m manage createsuperuser 
 
+init_db:
+	docker-compose exec portal python -m manage loaddata init_db
+
 boot: migrate admin static
