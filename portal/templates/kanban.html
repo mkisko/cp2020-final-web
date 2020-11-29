@@ -68,7 +68,7 @@
                   </div>
 
                   <div class="h2">{{ task.title }}</div>
-                  <div class="h5 mb-3">{{ task.description|default:'Нет описания' }}</div>
+                  <div class="h5 mb-3">{{ task.description|default:'Нет описания'| truncatewords:15 }}</div>
 
                   {% with task.person.all as ps %}
                     {% if ps %}<div class="hr-text hr-text-left mb-3 mt-3">Исполнители</div>{% endif %}
@@ -115,7 +115,7 @@
                 <input type="text" class="form-control check-regulations" name="title" required>
 
                 <label class="form-label">Описание задачи</label>
-                <textarea class="form-control" name="description"></textarea>
+                <textarea class="form-control" name="description" rows="10"></textarea>
 
                 <label class="form-label">Выберите исполнителей</label>
                 <select name="person" class="form-select select-employee-create" multiple placeholder='Нажмите чтобы выбрать' required></select>
@@ -183,7 +183,7 @@
 
                 <div>
                   <label class="form-label">Описание задачи</label>
-                  <textarea class="form-control" name="description"></textarea>
+                  <textarea class="form-control" name="description" rows="10"></textarea>
                 </div>
 
                 <div>
