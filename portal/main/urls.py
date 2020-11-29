@@ -7,11 +7,11 @@ urlpatterns = [
     path('', Index.as_view(), name='index'),
 
     #map
-    path('map/', Map.as_view(), name="map-index"),
+    path('map/', Map.as_view(), name="map"),
 
     #employees
-    path('employees/', Employee.as_view(), name="employee"),
-    path('employeer/', Employeer.as_view(), name="employeer-view"),
+    path('employeers/', Employeers.as_view(), name="employeers"),
+    path('employeers/<int:id>/', Employeers.as_view(), name="employeer-view"),
 
     # kanban
     path('kanban/', Kanban.as_view(), name='kanban'),

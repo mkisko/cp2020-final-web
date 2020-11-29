@@ -45,7 +45,7 @@
                   <span class="avatar" style="background-image: url({% static 'avatars/000m.jpg' %})"></span>
                 </div>
                 <div class="col">
-                  <h3 class="mb-0"><a href="/employeer">{{ profile.fio }}</a></h3>
+                  <h3 class="mb-0"><a href="{% url 'employeer-view' id=profile.id %}">{{ profile.fio }}</a></h3>
                   <div class="text-muted text-h5">{{ profile.role }}</div>
                 </div>
                 <div class="col-auto lh-1 align-self-start">
@@ -70,9 +70,7 @@
                         <span class="ml-auto text-h6 strong">{{ wl }}%</span>
                       </div>
                       <div class="progress progress-sm">
-                        <div class="progress-bar {% if wl < 25 %}bg-blue{% elif wl < 50 %}bg-success{% elif wl < 75 %}bg-warning{% else %}bg-danger{% endif %}" style="width:{{ wl }}%" role="progressbar" aria-valuenow="{{ wl }}" aria-valuemin="0" aria-valuemax="100">
-                          <span class="visually-hidden">84% Complete</span>
-                        </div>
+                        <div class="progress-bar {% if wl < 25 %}bg-blue{% elif wl < 50 %}bg-success{% elif wl < 75 %}bg-warning{% else %}bg-danger{% endif %}" style="width:{{ wl }}%" role="progressbar" aria-valuenow="{{ wl }}" aria-valuemin="0" aria-valuemax="100"></div>
                       </div>
                     {% endwith %}
                   </div>

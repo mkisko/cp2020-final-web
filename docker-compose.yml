@@ -21,14 +21,6 @@ services:
     depends_on:
       - portal
   
-  # mysql:
-  #   image: mysql:5.7
-  #   environment:
-  #     - MYSQL_ROOT_PASSWORD=root
-  #     - MYSQL_DATABASE=app
-  #   ports:
-  #     - 3366:3306
-  
   celery:
     build: ./portal
     command: celery -A portal worker -B -l INFO

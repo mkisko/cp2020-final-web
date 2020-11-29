@@ -101,16 +101,18 @@ class Map(View):
         return render(request, 'map.html')
 
 @method_decorator(login_required, name='dispatch')
-class Employee(View):
-    def get(self, request):
-        profile = Profile.objects.all()
-        questions = Question.objects.all()
+class Employeers(View):
+    def get(self, request, id=None):
+        if not id:
+            profile = Profile.objects.all()
+            questions = Question.objects.all()
 
-        return render(request, 'employeers.html', {
-            'profiles': profile,
-            'questions': questions
+            return render(request, 'personal/employeers.html', {
+                'profiles': profile,
+                'questions': questions
+            })
+
+        profile = Profile.objects.get(id=id)
+        return render(request, 'personal/employeer.html', {
+            'profile': profile,
         })
-
-class Employeer(View):
-    def get(self, request):
-        return render(request, 'employeer.html')
