@@ -8,21 +8,13 @@
 {% block button_page_actions %}
 <div class="col-auto ml-auto d-print-none">
   <div class="btn-list">
-    <a href="#" class="btn btn-primary d-none d-sm-inline-block" data-toggle="modal" data-target="#modal-report">
+    <a href="#" class="btn btn-primary d-none d-sm-inline-block" data-toggle="modal" data-target="#modal-profile-create">
       <svg xmlns="http://www.w3.org/2000/svg" class="icon" width="24" height="24" viewBox="0 0 24 24" stroke-width="2"
         stroke="currentColor" fill="none" stroke-linecap="round" stroke-linejoin="round">
         <path stroke="none" d="M0 0h24v24H0z" fill="none" />
         <line x1="12" y1="5" x2="12" y2="19" />
         <line x1="5" y1="12" x2="19" y2="12" /></svg>
       Добавить сотрудника
-    </a>
-    <a href="#" class="btn btn-primary d-sm-none btn-icon" data-toggle="modal" data-target="#modal-report"
-      aria-label="Create new report">
-      <svg xmlns="http://www.w3.org/2000/svg" class="icon" width="24" height="24" viewBox="0 0 24 24" stroke-width="2"
-        stroke="currentColor" fill="none" stroke-linecap="round" stroke-linejoin="round">
-        <path stroke="none" d="M0 0h24v24H0z" fill="none" />
-        <line x1="12" y1="5" x2="12" y2="19" />
-        <line x1="5" y1="12" x2="19" y2="12" /></svg>
     </a>
   </div>
 </div>
@@ -32,91 +24,131 @@
 {% block content_description %}Все сотрудники{% endblock %}
 
 {% block page_content %}
-<div class="content">
-  <div class="container-xl">
-    <!-- Page title -->
-    <div class="row row-cards">
-      {% for profile in profiles %}
-        <div class="col-md-6 col-lg-4">
-          <div class="card">
-            <div class="card-body">
-              <div class="row g-2 align-items-center">
-                <div class="col-auto">
-                  <span class="avatar" style="background-image: url({% static 'avatars/000m.jpg' %})"></span>
-                </div>
-                <div class="col">
-                  <h3 class="mb-0"><a href="{% url 'employeer-view' id=profile.id %}">{{ profile.fio }}</a></h3>
-                  <div class="text-muted text-h5">{{ profile.role }}</div>
-                </div>
-                <div class="col-auto lh-1 align-self-start">
-                  {% with profile|workload as wl %}
-                    {% if wl < 50 %}
-                      <span class="badge bg-gray-lt">Доступен</span>
-                    {% elif wl < 75 %}
-                      <span class="badge bg-gray-lt">Занят</span>
-                    {% else %}
-                      <span class="badge bg-gray-lt">Не доступен</span>
-                    {% endif %}
-                  {% endwith %}
-                </div>
-              </div>
-              
-              <div class="row align-items-center mt-4">
-                <div class="col">
-                  <div>
-                    {% with profile|workload as wl %}
-                      <div class="d-flex mb-1 align-items-center lh-1">
-                        <div class="text-h5 font-weight-bolder m-0">Загруженность</div>
-                        <span class="ml-auto text-h6 strong">{{ wl }}%</span>
-                      </div>
-                      <div class="progress progress-sm">
-                        <div class="progress-bar {% if wl < 25 %}bg-blue{% elif wl < 50 %}bg-success{% elif wl < 75 %}bg-warning{% else %}bg-danger{% endif %}" style="width:{{ wl }}%" role="progressbar" aria-valuenow="{{ wl }}" aria-valuemin="0" aria-valuemax="100"></div>
-                      </div>
-                    {% endwith %}
-                  </div>
-                </div>
 
-                <div class="col-auto">
-                  <div class="btn-list">
-                    <a href="#" class="btn btn-white btn-sm">
-                      +
-                    </a>
-                    <a href="#" class="btn btn-white btn-sm">
-                      Написать
-                    </a>
-                    <a href="#" class="btn btn-white btn-sm">
-                      Отчет о работе
-                    </a>
-                  </div>
-                </div>
-              </div>
+<div class="row row-cards">
+  {% for profile in profiles %}
+  <div class="col-md-6 col-lg-4">
+    <div class="card">
+      <div class="card-body">
+        <div class="row g-2 align-items-center">
+          <div class="col-auto">
+            <span class="avatar" style="background-image: url({% static 'avatars/000m.jpg' %})"></span>
+          </div>
+          <div class="col">
+            <h3 class="mb-0"><a href="{% url 'employeer-view' id=profile.id %}">{{ profile.fio }}</a></h3>
+            <div class="text-muted text-h5">{{ profile.role }}</div>
+          </div>
+          <div class="col-auto lh-1 align-self-start">
+            {% with profile|workload as wl %}
+            {% if wl < 50 %}
+            <span class="badge bg-gray-lt">Доступен</span>
+            {% elif wl < 75 %}
+            <span class="badge bg-gray-lt">Занят</span>
+            {% else %}
+            <span class="badge bg-gray-lt">Не доступен</span>
+            {% endif %}
+            {% endwith %}
+          </div>
+        </div>
 
-              <div class="row align-items-center mt-4">
-                <table class="table table-sm text-h5">
-                  {% for question in questions %}
-                    <tr>
-                      <td>{{ question.title }}</td>
-                      <td>
-                        {% with question|answer:profile as qa %}
-                          {% if not qa %}
-                            <span class="badge bg-red">Нет информации</span>
-                          {% else %}
-                            {{ qa.answer }}
-                          {% endif %}
-                        {% endwith %}
-                      </td>
-                    </tr>
-                  {% empty %}
-                    <div class="alert alert-danger">Работник не проходил опрос сегодня</div>
-                  {% endfor %}
-                </table>
+        <div class="row align-items-center mt-4">
+          <div class="col">
+            <div>
+              {% with profile|workload as wl %}
+              <div class="d-flex mb-1 align-items-center lh-1">
+                <div class="text-h5 font-weight-bolder m-0">Загруженность</div>
+                <span class="ml-auto text-h6 strong">{{ wl }}%</span>
               </div>
+              <div class="progress progress-sm">
+                <div
+                  class="progress-bar {% if wl < 25 %}bg-blue{% elif wl < 50 %}bg-success{% elif wl < 75 %}bg-warning{% else %}bg-danger{% endif %}"
+                  style="width:{{ wl }}%" role="progressbar" aria-valuenow="{{ wl }}" aria-valuemin="0"
+                  aria-valuemax="100"></div>
+              </div>
+              {% endwith %}
+            </div>
+          </div>
 
+          <div class="col-auto">
+            <div class="btn-list">
+              <a href="#" class="btn btn-white btn-sm">
+                +
+              </a>
+              <a href="#" class="btn btn-white btn-sm">
+                Написать
+              </a>
+              <a href="#" class="btn btn-white btn-sm">
+                Отчет о работе
+              </a>
             </div>
           </div>
         </div>
-      {% endfor %}
+
+        <div class="row align-items-center mt-4">
+          <table class="table table-sm text-h5">
+            {% for question in questions %}
+            <tr>
+              <td>{{ question.title }}</td>
+              <td>
+                {% with question|answer:profile as qa %}
+                {% if not qa %}
+                <span class="badge bg-red">Нет информации</span>
+                {% else %}
+                {{ qa.answer }}
+                {% endif %}
+                {% endwith %}
+              </td>
+            </tr>
+            {% empty %}
+            <div class="alert alert-danger">Работник не проходил опрос сегодня</div>
+            {% endfor %}
+          </table>
+        </div>
+
+      </div>
     </div>
+  </div>
+  {% endfor %}
+</div>
+
+<div class="modal modal-blur fade" id="modal-profile-create" tabindex="-1" role="dialog" aria-hidden="true">
+  <div class="modal-dialog modal-lg modal-dialog-centered" role="document">
+    <form method="post" class="modal-content">
+      <div class="modal-header">
+        <h5 class="modal-title">Добавление пользователя</h5>
+        <button type="button" class="btn-close" data-dismiss="modal" aria-label="Close"></button>
+      </div>
+
+      <div class="modal-body">
+        <div>
+          {% csrf_token %}
+
+          <label class="form-label">Логин</label>
+          <input type="text" class="form-control check-regulations" name="username" required>
+
+          <label class="form-label">Пароль</label>
+          <input type="text" class="form-control check-regulations" name="password" required>
+
+          <label class="form-label">ФИО</label>
+          <input type="text" class="form-control check-regulations" name="fio" required>
+
+          <label class="form-label">Роль</label>
+          <select name="role" class="form-select select-employee-create" multiple>
+            {% for role in roles %}
+              <option value="{{ role.id }}">{{ role.title }}</option>
+            {% endfor %}
+          </select>
+
+          <label class="form-label">Количество часов в день</label>
+          <input type="text" class="form-control" name="hours" required>
+        </form>
+      </div>
+
+      <div class="modal-footer">
+        <button type="button" class="btn mr-auto" data-dismiss="modal">Закрыть</button>
+        <button type="submit" class="btn btn-primary save-task-create">Сохранить</button>
+      </div>
+    </form>
   </div>
 </div>
 {% endblock %}

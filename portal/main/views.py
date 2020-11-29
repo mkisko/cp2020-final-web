@@ -8,7 +8,7 @@ from django.utils.decorators import method_decorator
 from django.contrib.auth.models import User
 from django.contrib import messages
 
-from .models import Task, Question, Profile, SubTask
+from .models import Task, Question, Profile, SubTask, Role
 from .forms import TaskForm
 
 @method_decorator(login_required, name='dispatch')
@@ -106,13 +106,29 @@ class Employeers(View):
         if not id:
             profile = Profile.objects.all()
             questions = Question.objects.all()
+            roles = Role.objects.all()
 
             return render(request, 'personal/employeers.html', {
                 'profiles': profile,
-                'questions': questions
+                'questions': questions,
+                'roles': roles
             })
 
         profile = Profile.objects.get(id=id)
         return render(request, 'personal/employeer.html', {
             'profile': profile,
         })
+
+    def post(self, request, id=None):
+        if not id:
+            data = request.POST
+            user = User.objects.create_user(data.get('username'), '', data.get('password'))
+
+            profile = Profile.objects.create(
+                user=user,
+                fio=data.get('fio'),
+                role=Role.objects.get(id=data.get('role')),
+                hours_per_day=data.get('hours')
+            )
+
+            return redirect('employeers')
