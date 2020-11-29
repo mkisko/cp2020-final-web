@@ -62,3 +62,7 @@ $ docker-compose up -d
 $ make boot
 ```
 5. Теперь сервер запущен и доступен по адресу `http://localhost/.
+
+
+6. API документация для внешних интеграций:
+- https://rosatomcp2020apidocumentation.docs.apiary.io/#reference
